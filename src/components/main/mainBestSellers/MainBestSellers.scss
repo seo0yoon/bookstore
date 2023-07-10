@@ -1,0 +1,36 @@
+@import "../../../../src/styles/global.scss";
+
+.mainBestSellers {
+  min-height: calc(100vh - $nav-height);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  flex-direction: column;
+  background-color: $color-background;
+
+  .mainBestSellersTitle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 40px 0 120px;
+
+    .mainTitle {
+      font-size: $font-xxl;
+      font-weight: 700;
+    }
+
+    @media (max-width: 68em) {
+      .mainTitle {
+        font-size: $font-xl;
+      }
+    }
+
+    @media (max-width: 40em) {
+      .mainTitle {
+        font-size: $font-lg;
+      }
+    }
+  }
+}

@@ -1,0 +1,128 @@
+@import "../../../src/styles/global.scss";
+
+.bookListContainer {
+  min-height: calc(100vh - $nav-height);
+  width: 100%;
+  position: relative;
+  flex-direction: column;
+}
+
+.bookListSearch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f0f0f0;
+
+  .bookListInputBox {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 600px;
+    height: 3.5rem;
+    background-color: #fff;
+    padding: 0 1rem;
+    font-size: $font-md;
+    color: $color-text;
+    margin: 1rem 0;
+
+    @media (max-width: 48em) {
+      align-self: center;
+      text-align: center;
+    }
+
+    .searchBar {
+      width: 100%;
+      height: 100%;
+      border: none;
+      background-color: transparent;
+      color: $color-text;
+      font-size: $font-md;
+      outline: none;
+    }
+  }
+
+  .searchBtn {
+    width: 30%;
+    height: 70%;
+    background-color: #8e99fc;
+    color: #fff;
+
+    @media (max-width: 48em) {
+      align-self: center;
+      text-align: center;
+
+      button {
+        margin: 0 auto;
+      }
+    }
+  }
+}
+
+.bookListContent {
+  display: flex;
+  gap: 38.4px;
+  margin-top: 80px;
+  width: 100%;
+
+  @media (max-width: 64em) {
+    width: 100%;
+  }
+
+  @media (max-width: 48em) {
+    width: 100%;
+  }
+
+  .sideBarBox {
+    display: flex;
+    flex-direction: column;
+    width: 369.6px;
+
+    .sideBarFilter {
+      display: flex;
+      flex-direction: column;
+      row-gap: 56px;
+
+      .varietys {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        .itemTitle {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: 100%;
+          height: 3.5rem;
+          background-color: rgb(230, 230, 230);
+          padding: 0 1rem;
+          font-size: $font-md;
+          color: $color-text;
+
+          @media (max-width: 48em) {
+            align-self: center;
+            text-align: center;
+          }
+        }
+
+        .itemWrap {
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          cursor: pointer;
+          padding: 0 1rem;
+
+          .item {
+            border-bottom: 1px solid #f0f0f0;
+            height: 45px;
+            margin-top: 27px;
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+
+  .bookListSectin {
+    width: calc(100% - 408px);
+  }
+}

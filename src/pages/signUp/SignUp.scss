@@ -1,0 +1,33 @@
+@import "../../../src/styles/global.scss";
+
+.signUpSection {
+  position: relative;
+  min-height: calc(100vh - $nav-height);
+  width: 100%;
+  position: relative;
+  background-color: $color-background;
+}
+
+.signUpContainer {
+  @include flexCenter;
+  flex-direction: column;
+  width: 38%;
+  min-height: 80vh;
+  margin: 0 auto;
+
+  .textBox {
+    margin: 7vh 0 6vh 0;
+
+    .text {
+      color: $color-text;
+      font-weight: 300;
+      font-size: $font-xl;
+      line-height: 38px;
+      letter-spacing: -0.02em;
+    }
+  }
+
+  @media (max-width: 64em) {
+    width: 75%;
+  }
+}

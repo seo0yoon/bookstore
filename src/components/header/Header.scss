@@ -1,0 +1,219 @@
+@import "../../../src/styles/global.scss";
+
+.header {
+  width: 100%;
+  background-color: $color-background;
+}
+
+.navBar {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 85%;
+  height: $nav-height;
+  margin: 0 auto;
+
+  .mobile {
+    display: none;
+  }
+
+  @media (max-width: 64em) {
+    .desktop {
+    }
+
+    .mobile {
+      display: inline-block;
+    }
+  }
+}
+
+.menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+
+  @media (max-width: 64em) {
+    position: fixed;
+    top: $nav-height;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: calc(100vh - $nav-height);
+    z-index: 50;
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(2px);
+    transform: translateY(1000%);
+    transition: all 0.3s ease;
+    flex-direction: column;
+    justify-content: center;
+
+    touch-action: none;
+  }
+
+  &.active {
+    transform: translateY(0);
+  }
+}
+
+.hamburgerMenu {
+  width: 1.5rem;
+  height: 2px;
+  background-color: $color-text;
+  position: absolute;
+  top: 2rem;
+  left: 50%;
+  transform: translateX(-50%) rotate(0);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  @media (max-width: 64em) {
+    display: flex;
+  }
+
+  &::after,
+  &::before {
+    content: " ";
+    width: 1.5rem;
+    height: 2px;
+    right: 0;
+    background-color: $color-text;
+    position: absolute;
+    transition: all 0.3s ease;
+  }
+
+  &::after {
+    top: 0.5rem;
+    transform: rotate(0);
+  }
+
+  &::before {
+    bottom: 0.5rem;
+    transform: rotate(0);
+  }
+
+  &.active {
+    width: 2rem;
+    transform: translateX(-50%) rotate(90deg);
+
+    &::after {
+      width: 1rem;
+      right: -2px;
+      top: 0.3rem;
+      transform: rotate(-40deg);
+    }
+
+    &::before {
+      width: 1rem;
+      right: -2px;
+      bottom: 0.3rem;
+      transform: rotate(40deg);
+    }
+  }
+}
+
+.menuItem {
+  margin: 0 1rem;
+  color: $color-text;
+  cursor: pointer;
+
+  &::after {
+    content: " ";
+    display: block;
+    width: 0%;
+    height: 2px;
+    background-color: $color-text;
+    transition: width 0.3s ease;
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+
+  @media (max-width: 64em) {
+    margin: 1rem 0;
+
+    &::after {
+      display: none;
+    }
+  }
+}
+
+.userContainer {
+  display: flex;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+
+  .userItem {
+    font-size: 11px;
+    margin-right: 17px;
+    color: rgb(133, 133, 133);
+
+    cursor: pointer;
+
+    &:last-child {
+      margin-right: 0px;
+    }
+  }
+}
+
+.desktop {
+  display: flex;
+  align-items: center;
+
+  .cartWrap {
+    position: relative;
+
+    .cartIcon {
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+    }
+
+    .cartQuantity {
+      position: absolute;
+      bottom: -5px;
+      right: -10px;
+      background-color: #ff6162;
+      color: white;
+      border-radius: 50%;
+      padding: 2px 6px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+  }
+
+  .loginUserIcon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #9c27b0, #e91e63);
+    margin-left: 14px;
+    color: #fff;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  .logoutUserIcon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #bbdefb, #1976d2);
+    margin-left: 14px;
+    color: #fff;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}

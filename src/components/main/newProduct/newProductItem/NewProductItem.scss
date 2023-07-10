@@ -1,0 +1,172 @@
+@import "../../../../styles/global.scss";
+
+.items {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+
+  .item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25%;
+
+    .itemContents {
+      width: 250px;
+      box-shadow: 0 0 10px 0 rgb(0 0 0 / 8%);
+      border: 1px solid #f1f1f1;
+
+      .content {
+        position: relative;
+        font-size: 13px;
+        width: 100%;
+        height: 300px;
+        background-color: #fff;
+        cursor: pointer;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .bookImg {
+          width: 60%;
+          height: 70%;
+        }
+
+        .badgeTop,
+        .badgeBottom {
+          position: absolute;
+          right: 5px;
+          width: 50px;
+          background-color: #ff6162;
+          padding: 3px 8px;
+          color: #fff;
+          min-width: 50px;
+          text-align: center;
+          font-size: 10.5px;
+          line-height: 15px;
+          font-weight: 600;
+          margin-bottom: 5px;
+        }
+
+        .badgeTop {
+          top: 5px;
+        }
+
+        .badgeBottom {
+          top: 30px;
+        }
+
+        .options {
+          @include flexColumn;
+          width: 100%;
+          height: 115px;
+          background-color: white;
+          position: absolute;
+          bottom: 0px;
+          left: 0px;
+          transition: bottom 0.7s ease;
+          align-items: flex-end;
+          padding: 13px 12px 13px 0;
+
+          .lists {
+            display: flex;
+            align-items: center;
+            align-items: inherit;
+            flex-direction: column;
+            color: grey;
+            gap: 16px;
+
+            .list {
+              display: flex;
+              gap: 8px;
+              line-height: 1;
+              cursor: pointer;
+
+              .context {
+                align-items: center;
+              }
+            }
+          }
+        }
+
+        .openOption {
+          bottom: 0px;
+        }
+
+        .closeOption {
+          bottom: -156px;
+        }
+      }
+
+      .bottomContext {
+        position: relative;
+        margin-top: 26px;
+
+        .bottomTitle {
+          font-size: 20px;
+          line-height: 1.15;
+          overflow-wrap: break-word;
+          max-height: 2.3em;
+        }
+
+        .bottomPrice {
+          font-size: 16px;
+          line-height: 1.43;
+          color: grey;
+
+          .prePrice {
+            font-weight: 400;
+            font-size: 12.5px;
+            text-decoration: line-through;
+            margin-right: 5px;
+          }
+
+          .salePrice {
+            color: #ff6162;
+            font-weight: 600;
+          }
+        }
+
+        .bottomPrice {
+          line-height: 1.88;
+          color: grey;
+        }
+      }
+
+      .bottomDetail {
+        margin-top: 22px;
+        color: grey;
+
+        .bottomAuthor {
+          font-size: 15px;
+          line-height: 1.43;
+          margin-right: 8px;
+        }
+
+        .bottomPublicationDate {
+          font-size: 15px;
+          line-height: 1.43;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 62em) {
+    .item {
+      width: 50%;
+    }
+  }
+
+  @media (max-width: 48em) {
+    .item {
+      width: 50%;
+    }
+  }
+
+  @media (max-width: 38em) {
+    .item {
+      width: 100%;
+    }
+  }
+}

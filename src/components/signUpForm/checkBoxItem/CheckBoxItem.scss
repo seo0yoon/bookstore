@@ -1,0 +1,78 @@
+@import "../../../styles/global.scss";
+
+.agreeItem {
+  display: flex;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid #efefef;
+
+  .checkIcon {
+    margin-right: 9px;
+    cursor: pointer;
+  }
+
+  .textContainer {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    cursor: pointer;
+
+    .agreeItemText {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 22px;
+
+      .essential {
+        color: $color-green;
+        margin-left: 5px;
+      }
+
+      .select {
+        color: #bcbcbc;
+        margin-left: 5px;
+      }
+    }
+  }
+
+  .triangleIcon {
+    // @include triangleIcon;
+  }
+}
+
+.agreeItemExpanded {
+  display: flex;
+  align-items: center;
+  padding: 16px 0;
+
+  .checkIcon {
+    margin-right: 9px;
+  }
+
+  .textContainer {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    cursor: pointer;
+
+    .agreeItemText {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 22px;
+      color: #000000;
+
+      .essential {
+        color: $color-green;
+        margin-left: 5px;
+      }
+
+      .select {
+        color: #bcbcbc;
+        margin-left: 5px;
+      }
+    }
+  }
+
+  .triangleIcon {
+    // @include triangleIcon;
+  }
+}

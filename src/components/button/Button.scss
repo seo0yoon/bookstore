@@ -1,0 +1,15 @@
+@import "../../../src/styles/global.scss";
+
+.btn {
+  display: flex;
+  align-items: center;
+  padding: 7px 24px 10px 24px;
+  background-color: $color-primary;
+  color: $color-background;
+  font-size: 14px;
+
+  &:hover {
+    background-color: $color-secondary;
+    opacity: 0.8;
+  }
+}

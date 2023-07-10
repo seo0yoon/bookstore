@@ -1,0 +1,41 @@
+@import "../../../styles/global.scss";
+
+.buttonBox {
+  @include flexCenter;
+  flex-direction: column;
+  margin: 50.82px 0 0 0;
+
+  .loginBtn,
+  .signUpBtn {
+    width: 100%;
+    height: 56px;
+    font-weight: 700;
+    font-size: $font-button;
+    line-height: 22px;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .loginBtn {
+    margin-bottom: 10px;
+    background-color: $color-blue;
+    box-shadow: 0px 4px 4px rgba(0 0 0 / 0.1);
+    color: $color-background;
+
+    &:hover {
+      background-color: darken($color-blue, 10%);
+      box-shadow: 0px 4px 4px rgba(0 0 0 / 0.1);
+    }
+  }
+
+  .signUpBtn {
+    border: 1px solid $color-blue;
+    background-color: $color-background;
+    color: $color-blue;
+    filter: drop-shadow(0px 4px 4px rgba(0 0 0 / 0.1));
+
+    &:hover {
+      border-color: darken($color-blue, 10%);
+      background-color: rgba(75, 149, 253, 0.1);
+    }
+  }
+}

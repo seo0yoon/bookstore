@@ -1,0 +1,17 @@
+@import "../../../src/styles/global.scss";
+
+.logo-text {
+  font-family: "Akaya Telivigala", cursive;
+  font-size: $font-xxl;
+  font-weight: 700;
+  color: $color-text;
+  transition: all 0.2s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  @media (max-width: 64em) {
+    font-size: $font-xl;
+  }
+}

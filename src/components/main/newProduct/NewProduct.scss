@@ -1,0 +1,153 @@
+@import "../../../styles/global.scss";
+
+.newProduct {
+  min-height: calc(100vh - $nav-height);
+  width: 100%;
+  background-color: $color-background;
+  position: relative;
+
+  .newProductTitle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 40px 0 120px;
+
+    h2 {
+      font-size: $font-xxl;
+      font-weight: 700;
+    }
+
+    @media (max-width: 68em) {
+      h2 {
+        font-size: $font-xl;
+      }
+    }
+
+    @media (max-width: 40em) {
+      h2 {
+        font-size: $font-lg;
+      }
+    }
+  }
+
+  .swiperBox {
+    position: relative;
+
+    .swiper {
+      display: flex;
+      width: 100%;
+      // overflow: hidden;
+    }
+
+    .swiper-wrapper {
+      height: 480px;
+      display: flex;
+    }
+
+    .swiper-slide {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      transition: transform 0.5s ease-out;
+    }
+
+    .swiper-slide-active {
+      transition: transform 0.5s ease-out;
+    }
+
+    .swiper-slide-next {
+      transform: scale(1.2);
+      width: 100%;
+    }
+
+    .swiper-slide-prev {
+      transition: transform 0.5s ease-out;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+      position: absolute;
+      top: 50%;
+      margin-top: -22px;
+      z-index: 10;
+      cursor: pointer;
+    }
+
+    .swiper-button-next {
+      font-size: 26px;
+      right: 50px;
+    }
+
+    .swiper-button-prev {
+      font-size: 26px;
+      left: 50px;
+    }
+
+    .swiperSlideBox {
+      width: 300px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      box-shadow: 0 0 10px 0 rgb(0 0 0 / 8%);
+      border: 1px solid #f1f1f1;
+
+      .swiperSlideImg {
+        width: 197px;
+        height: 280px;
+        object-fit: cover;
+      }
+
+      .swiperSlideTitle {
+        font-size: $font-md;
+        font-weight: 700;
+        margin: 20px 0 12px;
+      }
+
+      .swiperSlideAuthor {
+        font-size: $font-sm;
+        font-weight: 400;
+      }
+    }
+
+    .mobile {
+      display: none;
+    }
+
+    @media (max-width: 78em) {
+      .swiper {
+        overflow-x: scroll;
+      }
+
+      .swiper-wrapper {
+        height: 400px;
+        background-color: red;
+      }
+
+      .swiperSlideBox {
+        width: 250px;
+        height: 100%;
+
+        .swiperSlideImg {
+          width: 150px;
+          height: 220px;
+        }
+
+        .swiperSlideTitle {
+          font-size: $font-sm;
+        }
+
+        .swiperSlideAuthor {
+          font-size: $font-xs;
+        }
+      }
+
+      .swiper-button-next,
+      .swiper-button-prev {
+        display: none;
+      }
+    }
+  }
+}

@@ -1,0 +1,50 @@
+@import "../../../styles/global.scss";
+
+.mainSection {
+  min-height: calc(100vh - $nav-height);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  flex-direction: column;
+  background-color: #f1eef7;
+}
+
+.mainContainer {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f1eef7;
+
+  @media (max-width: 64em) {
+    width: 85%;
+  }
+
+  @media (max-width: 48em) {
+    flex-direction: column-reverse;
+    width: 100%;
+
+    & > .box:first-child {
+      width: 100%;
+      margin-top: 2rem;
+    }
+  }
+}
+
+.box {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(1turn);
+  }
+}

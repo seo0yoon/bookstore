@@ -1,0 +1,23 @@
+@import "../../../../styles/global.scss";
+
+.policyContainer {
+  padding: 0 26px;
+  background-color: $color-grey;
+
+  .policyContent {
+    padding: 16px 0;
+
+    .sectionTitle {
+      margin-bottom: 8px;
+      font-weight: 700;
+      font-size: $font-md;
+      line-height: 22px;
+    }
+
+    .sectionContent {
+      font-weight: 400;
+      font-size: $font-xs;
+      line-height: 18px;
+    }
+  }
+}

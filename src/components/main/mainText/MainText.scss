@@ -1,0 +1,41 @@
+@import "../../../../src/styles/global.scss";
+
+.title {
+  font-size: 2.8em;
+  font-weight: 700;
+  text-transform: capitalize;
+  height: 3.6em;
+  color: $color-text;
+  align-self: flex-start;
+
+  span {
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 78em) {
+    font-size: $font-xl;
+  }
+
+  @media (max-width: 48em) {
+    align-self: center;
+    text-align: center;
+  }
+}
+
+.sub-title {
+  font-size: $font-md;
+  text-transform: capitalize;
+  color: $color-darkgrey;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  align-self: flex-start;
+
+  @media (max-width: 40em) {
+    font-size: $font-md;
+  }
+
+  @media (max-width: 48em) {
+    align-self: center;
+    text-align: center;
+  }
+}

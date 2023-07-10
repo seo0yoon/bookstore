@@ -1,0 +1,105 @@
+@import "../../../src/styles/global.scss";
+
+.footerSection {
+  min-height: 30vh;
+  width: 100%;
+  background-color: $color-background;
+  position: relative;
+  color: $color-text;
+  display: flex;
+  flex-direction: column;
+}
+
+.footerContainer {
+  width: 75%;
+  margin: 4rem auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid $color-text;
+
+  @media (max-width: 48em) {
+    width: 90%;
+    h1 {
+      font-size: $font-xxxl;
+    }
+  }
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  @media (max-width: 48em) {
+    width: 100%;
+  }
+}
+
+.iconList {
+  display: flex;
+  align-items: center;
+  margin: 1rem auto;
+
+  & > * {
+    padding-right: 0.5rem;
+    transition: all 0.2s ease;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+}
+
+.footerMenuItems {
+  list-style: none;
+  width: 50%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-gap: 1rem;
+
+  @media (max-width: 48em) {
+    display: none;
+  }
+}
+
+.footerItem {
+  width: fit-content;
+  cursor: pointer;
+
+  &::after {
+    content: " ";
+    display: block;
+    width: 0%;
+    height: 2px;
+    background: $color-text;
+    transition: width 0.3s ease;
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+}
+
+.buttom {
+  width: 75%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  a {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 48em) {
+    flex-direction: column;
+    width: 100%;
+
+    span {
+      margin-bottom: 1rem;
+    }
+  }
+}

@@ -1,0 +1,151 @@
+@import "../../styles/global.scss";
+
+.cart {
+  min-height: calc(100vh - $nav-height);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  flex-direction: column;
+  background-color: #fff;
+
+  .wrapper {
+    flex-direction: column;
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+
+    .productAll {
+      margin: 50px 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .product {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+
+        .checkIcon {
+          margin-right: 6px;
+          font-size: 25px;
+        }
+      }
+
+      .orderProcess {
+        display: flex;
+        align-items: center;
+
+        .stepOne,
+        .stepTwo,
+        .stepThree {
+          display: flex;
+          align-items: center;
+          font-size: 15px;
+          margin-right: 10px;
+          color: #969696;
+          font-weight: 400;
+
+          .step {
+            background-color: #d0d0d0;
+            color: #fff;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 5px;
+          }
+        }
+
+        .stepOne {
+          color: #2e2e2e;
+          font-weight: 700;
+
+          .step {
+            background-color: #4dac27;
+            color: #fff;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 5px;
+          }
+        }
+      }
+    }
+
+    .priceBlock {
+      .blockTitle {
+        padding: 20px 0;
+        font-weight: 700;
+        font-size: 17px;
+      }
+
+      .productPrice {
+        display: flex;
+        justify-content: space-between;
+        border-top: 1px solid #2e2e2e;
+        padding: 20px 0;
+
+        .priceContext {
+        }
+
+        .price {
+        }
+      }
+
+      .deliveryCharge {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px 0;
+
+        .priceContext {
+        }
+
+        .price {
+        }
+      }
+
+      .totalPrice {
+        display: flex;
+        justify-content: space-between;
+        border-top: 1px solid #2e2e2e;
+        padding: 20px 0;
+
+        .priceContext {
+          color: #4dac27;
+          font-weight: 700;
+        }
+
+        .price {
+          font-size: 24px;
+          font-weight: 700;
+        }
+      }
+    }
+  }
+
+  .checkOut {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    margin-top: 60px;
+    background-color: black;
+    cursor: pointer;
+
+    .checkOutBtn {
+      width: 200px;
+      height: 50px;
+      background-color: black;
+      font-size: 15px;
+      color: white;
+      cursor: pointer;
+    }
+  }
+}
