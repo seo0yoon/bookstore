@@ -64,95 +64,96 @@
       }
     }
 
-    .orderHeader {
-      display: flex;
-      align-items: center;
-      padding: 16px 20px;
-      background-color: #f7f7f7;
-      box-sizing: border-box;
+    .orderContainer {
+      .orderHeader {
+        display: flex;
+        align-items: center;
+        padding: 16px 20px;
+        background-color: #f7f7f7;
+        box-sizing: border-box;
 
-      .headerDate {
-        font-size: 16px;
-        line-height: 26px;
-        letter-spacing: -0.01em;
-        font-weight: 700;
-        margin-right: 10px;
+        .headerDate {
+          font-size: 16px;
+          line-height: 26px;
+          letter-spacing: -0.01em;
+          font-weight: 700;
+          margin-right: 10px;
+        }
+
+        .headerNumber {
+          padding-top: 2px;
+          font-size: 14px;
+          line-height: 22px;
+          letter-spacing: -0.01em;
+          font-weight: 500;
+        }
       }
 
-      .headerNumber {
-        padding-top: 2px;
-        font-size: 14px;
-        line-height: 22px;
-        letter-spacing: -0.01em;
-        font-weight: 500;
-      }
-    }
+      .order {
+        display: flex;
+        align-items: center;
+        padding: 20px 0;
 
-    .order {
-      display: flex;
-      align-items: center;
-      padding: 20px 0;
-
-      .orderTitle {
-        font-size: 16px;
-        font-weight: 700;
-      }
-    }
-
-    .deliveryInfo {
-      display: flex;
-      align-items: center;
-      border-radius: 10px;
-      padding: 13px 16px;
-      margin-bottom: 16px;
-      background-color: rgba(80, 85, 177, 0.06);
-
-      .deliveryTitle {
-        font-size: 13px;
-        line-height: 19px;
-        letter-spacing: -0.01em;
-        font-weight: 700;
-        color: #5055b1;
-        margin-right: 10px;
+        .orderTitle {
+          font-size: 16px;
+          font-weight: 700;
+        }
       }
 
-      .deliveryDate {
-        font-size: 13px;
-        line-height: 19px;
-        letter-spacing: -0.01em;
-        font-weight: 700;
-        margin-right: 10px;
+      .deliveryInfo {
+        display: flex;
+        align-items: center;
+        border-radius: 10px;
+        padding: 13px 16px;
+        margin-bottom: 16px;
+        background-color: rgba(80, 85, 177, 0.06);
+
+        .deliveryTitle {
+          font-size: 13px;
+          line-height: 19px;
+          letter-spacing: -0.01em;
+          font-weight: 700;
+          color: #5055b1;
+          margin-right: 10px;
+        }
+
+        .deliveryDate {
+          font-size: 13px;
+          line-height: 19px;
+          letter-spacing: -0.01em;
+          font-weight: 700;
+          margin-right: 10px;
+        }
+
+        .deliveryStatus {
+          font-size: 13px;
+          line-height: 19px;
+          letter-spacing: -0.01em;
+        }
       }
 
-      .deliveryStatus {
-        font-size: 13px;
-        line-height: 19px;
-        letter-spacing: -0.01em;
+      .delivery {
+        padding: 20px 0;
+        border-bottom: 1px solid #e5e5e5;
+
+        .deliveryTitle {
+          font-size: 14px;
+          font-weight: 500;
+          margin-right: 10px;
+        }
       }
-    }
 
-    .delivery {
-      padding: 20px 0;
-      border-bottom: 1px solid #e5e5e5;
+      .deliveryPrice {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 0;
+        border-bottom: 1px solid #e5e5e5;
 
-      .deliveryTitle {
-        font-size: 14px;
-        font-weight: 500;
-        margin-right: 10px;
-      }
-    }
-
-    .deliveryPrice {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 20px 0;
-      border-bottom: 1px solid #e5e5e5;
-
-      .price {
-        font-size: 14px;
-        font-weight: 700;
-        margin-right: 10px;
+        .price {
+          font-weight: 700;
+          margin-right: 10px;
+        }
       }
     }
   }

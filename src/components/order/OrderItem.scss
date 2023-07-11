@@ -1,84 +1,85 @@
 @import "../../styles/global.scss";
 
+
 .orderItems {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 
-  .orderItem {
-    .infoMain {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      border-bottom: 1px solid #e7e7e7;
-
-      padding: 20px;
-      background-color: #fff;
-
-      .productName {
+    .orderItem {
+      .infoMain {
+        position: relative;
         display: flex;
-        align-items: center;
-        margin-bottom: 16px;
-        cursor: pointer;
+        flex-direction: column;
+        border-bottom: 1px solid #e7e7e7;
 
-        .checkIcon {
-          margin-right: 10px;
-          font-size: 24px;
-        }
-      }
+        padding: 20px;
+        background-color: #fff;
 
-      .closeIcon {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        font-size: 20px;
-        cursor: pointer;
-      }
+        .productName {
+          display: flex;
+          align-items: center;
+          margin-bottom: 16px;
+          cursor: pointer;
 
-      .productBox {
-        display: flex;
-
-        .productImg {
-          background-color: #c4c4c4;
-          margin-right: 20px;
-          width: 80px;
-          height: 100px;
-          border: 1px solid #e7e7e7;
+          .checkIcon {
+            margin-right: 10px;
+            font-size: 24px;
+          }
         }
 
-        .productInfoBox {
-          .deliveryBadge {
-            padding: 2px 5px;
-            color: #3c3c3c;
-            background: rgba(23, 23, 237, 0.1);
-            font-weight: 600;
-            margin-bottom: 5px;
-            font-size: 11px;
+        .closeIcon {
+          position: absolute;
+          top: 20px;
+          right: 20px;
+          font-size: 20px;
+          cursor: pointer;
+        }
+
+        .productBox {
+          display: flex;
+
+          .productImg {
+            background-color: #c4c4c4;
+            margin-right: 20px;
             width: 80px;
-            border-radius: 5px;
-            text-align: center;
+            height: 100px;
+            border: 1px solid #e7e7e7;
           }
 
-          .productTitle {
-            font-size: 14px;
-            line-height: 22px;
-            letter-spacing: -0.01em;
-            font-weight: 600;
-            color: #000;
+          .productInfoBox {
+            .deliveryBadge {
+              padding: 2px 5px;
+              color: #3c3c3c;
+              background: rgba(23, 23, 237, 0.1);
+              font-weight: 600;
+              margin-bottom: 5px;
+              font-size: 11px;
+              width: 80px;
+              border-radius: 5px;
+              text-align: center;
+            }
+
+            .productTitle {
+              font-size: 14px;
+              line-height: 22px;
+              letter-spacing: -0.01em;
+              font-weight: 600;
+              color: #000;
+            }
           }
         }
-      }
 
-      .productQuantity {
-        font-size: 13px;
+        .productQuantity {
+          font-size: 13px;
 
-        color: #595959;
-      }
+          color: #595959;
+        }
 
-      .productPrice {
-        font-size: 14px;
-        font-weight: 700;
-        margin-top: 18px;
+        .productPrice {
+          font-size: 14px;
+          font-weight: 700;
+          margin-top: 18px;
+        }
       }
     }
   }
-}

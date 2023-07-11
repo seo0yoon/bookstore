@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { saveOrderToFirebase } from "../../utils/order";
 import { CartContext } from "../../contexts/CartContext";
+import { getAuth } from "firebase/auth";
 
 import CartList from "../../components/cart/CartList";
 import OrderModal from "../../components/modal/orderModal/OrderModal";
@@ -15,6 +16,15 @@ const Cart = () => {
 
   const [deliveryCharge, setDeliveryCharge] = useState(3000);
   const [totalPrice, setTotalPrice] = useState(0);
+  const [userId, setUserId] = useState(null);
+
+  useEffect(() => {
+    const auth = getAuth();
+    const user = auth.currentUser;
+    if (user) {
+      setUserId(user.uid);
+    }
+  }, []);
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
@@ -82,7 +92,7 @@ const Cart = () => {
           </div>
         </div>
       </div>
-      <OrderModal saveOrder={() => saveOrderToFirebase(cart)} />
+      <OrderModal saveOrder={() => saveOrderToFirebase(cart, userId)} />
     </div>
   );
 };

@@ -1,12 +1,18 @@
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import db from "../firebase/firestore";
 
-export const saveOrderToFirebase = async (order) => {
+export const saveOrderToFirebase = async (items, userId) => {
   try {
     const ordersRef = collection(db, "orders");
+    const totalPrice = items.reduce(
+      (total, item) => total + parseInt(item.price) * item.quantity,
+      0
+    );
     const newOrder = {
-      ...order,
+      items: items,
       orderedAt: serverTimestamp(),
+      totalPrice: totalPrice,
+      userId: userId,
     };
     const orderRef = await addDoc(ordersRef, newOrder);
     console.log("주문완료 id: ", orderRef.id);

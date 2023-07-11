@@ -24,4 +24,14 @@ export const getBooks = async () => {
   return booksList;
 };
 
+export const getOrders = async () => {
+  const ordersRef = collection(db, "orders");
+  const ordersSnapshot = await getDocs(ordersRef);
+  const ordersList = ordersSnapshot.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
+  return ordersList;
+};
+
 export default db;
