@@ -1,0 +1,77 @@
+.cartModal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  .checkOutBtn {
+    cursor: pointer;
+  }
+
+  .cartIcon {
+    margin-left: 10px;
+  }
+
+  .modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+  }
+
+  .modalContent {
+    background-color: #fff;
+    padding: 26px;
+    border-radius: 8px;
+    max-width: 300px;
+    width: 100%;
+
+    h2 {
+      text-align: center;
+      font-size: 14px;
+      line-height: 23px;
+      letter-spacing: -0.01em;
+      font-weight: 500;
+      margin-bottom: 30px;
+    }
+
+    .btnBox {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .closeBtn {
+        width: 102px;
+        height: 37px;
+        background-color: rgb(162, 162, 162);
+        font-size: 15px;
+        color: white;
+        cursor: pointer;
+        margin-right: 10px;
+
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+
+      .goToBtn {
+        width: 102px;
+        height: 37px;
+        background-color: #8e99fc;
+        font-size: 15px;
+        color: white;
+        cursor: pointer;
+
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+    }
+  }
+}

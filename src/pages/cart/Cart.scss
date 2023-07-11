@@ -129,23 +129,4 @@
       }
     }
   }
-
-  .checkOut {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 50%;
-    margin-top: 60px;
-    background-color: black;
-    cursor: pointer;
-
-    .checkOutBtn {
-      width: 200px;
-      height: 50px;
-      background-color: black;
-      font-size: 15px;
-      color: white;
-      cursor: pointer;
-    }
-  }
 }

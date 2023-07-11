@@ -24,16 +24,20 @@ export const CartProvider = ({ children }) => {
   }, [cart]);
 
   const addToCart = (item) => {
-    const itemIndex = cart.findIndex((cartItem) => cartItem.id === item.id);
-    if (itemIndex === -1) {
-      setCart((prevCart) => [
-        ...prevCart,
-        { ...item, quantity: 1, selected: true },
-      ]);
-      alert("장바구니에 추가되었습니다.");
-    } else {
-      alert("이미 장바구니에 존재하는 상품입니다.");
-    }
+    setCart((prevCart) => {
+      const itemIndex = prevCart.findIndex(
+        (cartItem) => cartItem.id === item.id
+      );
+      if (itemIndex === -1) {
+        return [...prevCart, { ...item, quantity: 1, selected: true }];
+      } else {
+        return prevCart.map((cartItem, index) =>
+          index === itemIndex
+            ? { ...cartItem, quantity: cartItem.quantity + 1 }
+            : cartItem
+        );
+      }
+    });
   };
 
   const removeFromCart = (itemId) => {

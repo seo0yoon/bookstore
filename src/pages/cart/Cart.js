@@ -1,8 +1,9 @@
 import React, { useState, useContext, useEffect } from "react";
-
+import { saveOrderToFirebase } from "../../utils/order";
 import { CartContext } from "../../contexts/CartContext";
 
 import CartList from "../../components/cart/CartList";
+import OrderModal from "../../components/modal/orderModal/OrderModal";
 
 import { AiOutlineCheckCircle, AiFillCheckCircle } from "react-icons/ai";
 
@@ -86,14 +87,7 @@ const Cart = () => {
           </div>
         </div>
       </div>
-      <div className="checkOut">
-        <button
-          className="checkOutBtn"
-          onClick={() => alert("서비스 준비중입니다.")}
-        >
-          주문하기
-        </button>
-      </div>
+      <OrderModal saveOrder={() => saveOrderToFirebase(cart)} />
     </div>
   );
 };

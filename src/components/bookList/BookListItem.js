@@ -2,14 +2,29 @@ import React, { useState, useContext } from "react";
 import { CartContext } from "../../contexts/CartContext";
 
 import { BiSolidHeart } from "react-icons/bi";
-import { BsCart2, BsShare } from "react-icons/bs";
+import { BsShare } from "react-icons/bs";
+
+import CartModal from "../modal/cartModal/CartModal";
 
 import "./BookListItem.scss";
 
 const BookListItem = ({ book }) => {
-  const { addToCart } = useContext(CartContext);
+  const { cart, addToCart } = useContext(CartContext);
 
   const [isOptionOpen, setIsOptionOpen] = useState(false);
+  const [message, setMessage] = useState("");
+
+  const handleAddToCart = () => {
+    const isAlreadyInCart = cart.find((item) => item.id === book.id);
+
+    if (isAlreadyInCart) {
+      setMessage("장바구니에 이미 담은 상품이 있어 수량이 추가 되었습니다.");
+    } else {
+      setMessage("상품이 장바구니에 담겼습니다.");
+    }
+
+    addToCart(book);
+  };
 
   return (
     <div className="bookListItem">
@@ -34,9 +49,8 @@ const BookListItem = ({ book }) => {
                 <div className="context">공유하기</div>
                 <BsShare className="icon" />
               </li>
-              <li className="list" onClick={() => addToCart(book)}>
-                <div className="context">장바구니에 추가</div>
-                <BsCart2 className="icon" />
+              <li className="list" onClick={handleAddToCart}>
+                <CartModal message={message} />
               </li>
             </ul>
           </div>

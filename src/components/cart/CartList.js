@@ -23,7 +23,6 @@ const CartList = ({ item, toggleItemChecked }) => {
 
   const handleItemCheck = () => {
     toggleItemChecked(item.id);
-    console.log("체크", item.id);
   };
 
   return (
