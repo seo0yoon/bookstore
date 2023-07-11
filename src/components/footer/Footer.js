@@ -8,16 +8,6 @@ import LinkedIn from "../../assets/linkedin.svg";
 import "./Footer.scss";
 
 const Footer = () => {
-  const scrollTo = (id) => {
-    let element = document.getElementById(id);
-
-    if (element) {
-      element.scrollIntoView({
-        behavior: "smooth",
-      });
-    }
-  };
-
   return (
     <div className="footerSection">
       <div className="footerContainer">

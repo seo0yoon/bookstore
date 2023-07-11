@@ -14,7 +14,7 @@ const MainText = () => {
         스릴 넘치는 소설부터 깊이 있는 비평서까지, <br /> 다양한 문학세계를
         한눈에 만나보세요.
       </h3>
-      <SearchBar />
+      {/* <SearchBar /> */}
     </div>
   );
 };

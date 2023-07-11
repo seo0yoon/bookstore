@@ -1,5 +1,13 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs } from "firebase/firestore";
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  addDoc,
+  doc,
+  updateDoc,
+  deleteDoc,
+} from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDNRIp_To5zF5Atz3cyxtzwlU7qt8UaRmg",
@@ -22,6 +30,41 @@ export const getBooks = async () => {
     ...doc.data(),
   }));
   return booksList;
+};
+
+export const getBestsellerBooks = async () => {
+  const booksRef = collection(db, "bestseller");
+  const booksSnapshot = await getDocs(booksRef);
+  const booksList = booksSnapshot.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
+  return booksList;
+};
+
+export const getNewBooks = async () => {
+  const booksRef = collection(db, "newbooks");
+  const booksSnapshot = await getDocs(booksRef);
+  const booksList = booksSnapshot.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
+  return booksList;
+};
+
+export const addBook = async (book) => {
+  const booksRef = collection(db, "books");
+  await addDoc(booksRef, book);
+};
+
+export const updateBook = async (bookId, updatedBook) => {
+  const bookRef = doc(db, "books", bookId);
+  await updateDoc(bookRef, updatedBook);
+};
+
+export const deleteBook = async (bookId) => {
+  const bookRef = doc(db, "books", bookId);
+  await deleteDoc(bookRef);
 };
 
 export const getOrders = async () => {

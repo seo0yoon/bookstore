@@ -11,8 +11,14 @@ import { AiOutlineCheckCircle, AiFillCheckCircle } from "react-icons/ai";
 import "./Cart.scss";
 
 const Cart = () => {
-  const { cart, checked, toggleAllChecked, toggleItemChecked, productTotal } =
-    useContext(CartContext);
+  const {
+    cart,
+    clearCart,
+    checked,
+    toggleAllChecked,
+    toggleItemChecked,
+    productTotal,
+  } = useContext(CartContext);
 
   const [deliveryCharge, setDeliveryCharge] = useState(3000);
   const [totalPrice, setTotalPrice] = useState(0);
@@ -40,6 +46,15 @@ const Cart = () => {
 
   const handleCheck = () => {
     toggleAllChecked();
+  };
+
+  const completeOrder = async () => {
+    const result = await saveOrderToFirebase(cart, userId);
+    if (result) {
+      clearCart();
+      return true;
+    }
+    return false;
   };
 
   return (
@@ -92,7 +107,7 @@ const Cart = () => {
           </div>
         </div>
       </div>
-      <OrderModal saveOrder={() => saveOrderToFirebase(cart, userId)} />
+      <OrderModal saveOrder={completeOrder} />
     </div>
   );
 };

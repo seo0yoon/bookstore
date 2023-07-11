@@ -4,7 +4,7 @@ import BestSellersItem from "./bestSellersItem/BestSellersItem";
 
 import "./MainBestSellers.scss";
 
-const MainBestSellers = ({ books }) => {
+const MainBestSellers = ({ bestseller }) => {
   return (
     <div className="mainBestSellers">
       <div className="mainBestSellersTitle">
@@ -12,7 +12,7 @@ const MainBestSellers = ({ books }) => {
       </div>
 
       <div className="items">
-        {books.map((book) => (
+        {bestseller.map((book) => (
           <BestSellersItem key={book.id} book={book} />
         ))}
       </div>

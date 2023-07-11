@@ -21,8 +21,10 @@ const OrderModal = ({ saveOrder }) => {
       {showModal && (
         <div className="modalOverlay">
           <div className="modalContent">
-            <h2>주문이 완료되었습니다. <br/>
-            주문내역을 확인하시겠습니까? </h2>
+            <h2>
+              주문이 완료되었습니다. <br />
+              주문내역을 확인하시겠습니까?{" "}
+            </h2>
             <div className="btnBox">
               <button className="closeBtn" onClick={() => setShowModal(false)}>
                 취소

@@ -8,9 +8,7 @@ import "./NewProduct.scss";
 
 SwiperCore.use([Pagination, Navigation]);
 
-const NewProduct = ({ books }) => {
-  console.log(books);
-
+const NewProduct = ({ newBooks }) => {
   return (
     <div className="newProduct">
       <div className="newProductTitle">
@@ -31,7 +29,7 @@ const NewProduct = ({ books }) => {
           onSlideChange={() => console.log("slide change")}
           autoplay={{ delay: 2000 }}
         >
-          {books?.map((book) => (
+          {newBooks?.map((book) => (
             <SwiperSlide className="swiper-slide" key={book.id}>
               <div className="swiperSlideBox">
                 <img
@@ -62,8 +60,8 @@ const NewProduct = ({ books }) => {
           spaceBetween={10}
           slidesPerView={"auto"}
         >
-          {books?.map((book) => (
-            <div className="swiperSlideBox">
+          {newBooks?.map((book) => (
+            <div className="swiperSlideBox" key={book.id}>
               <img className="swiperSlideImg" src={book.imageURL} alt="book" />
             </div>
           ))}

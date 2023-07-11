@@ -8,9 +8,9 @@ const SearchBar = () => {
   return (
     <div className="searchBarBox">
       <input className="searchBar" placeholder="도서를 검색하세요." />
-      <button className="searchBtn">
-        <BsSearch/>
-      </button>
+      <div className="searchBtn">
+        <BsSearch />
+      </div>
     </div>
   );
 };

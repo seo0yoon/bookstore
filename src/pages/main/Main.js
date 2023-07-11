@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { getBooks } from "../../../src/firebase/firestore";
+import {
+  getBestsellerBooks,
+  getNewBooks,
+} from "../../../src/firebase/firestore";
 
 import MainText from "../../components/main/mainText/MainText";
 import CoverGif from "../../components/main/coverGif/CoverGif";
@@ -11,12 +14,22 @@ import "./Main.scss";
 import MainOffers from "../../components/main/mainOffers/MainOffers";
 
 const Main = () => {
-  const [books, setBooks] = useState([]);
+  const [bestseller, setBestseller] = useState([]);
+  const [newBooks, setNewBooks] = useState([]);
 
   useEffect(() => {
     const fetchBooks = async () => {
-      const fetchedBooks = await getBooks();
-      setBooks(fetchedBooks);
+      const fetchedBestseller = await getBestsellerBooks();
+      setBestseller(fetchedBestseller);
+    };
+
+    fetchBooks();
+  }, []);
+
+  useEffect(() => {
+    const fetchBooks = async () => {
+      const fetchedNewBooks = await getNewBooks();
+      setNewBooks(fetchedNewBooks);
     };
 
     fetchBooks();
@@ -34,9 +47,9 @@ const Main = () => {
           </div>
         </div>
       </main>
-      <MainBestSellers books={books} />
+      <MainBestSellers bestseller={bestseller} />
       <MainOffers />
-      <NewProduct books={books} />
+      <NewProduct newBooks={newBooks} />
       <MainBanner />
     </>
   );

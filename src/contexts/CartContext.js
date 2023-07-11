@@ -62,6 +62,11 @@ export const CartProvider = ({ children }) => {
     );
   };
 
+  const clearCart = () => {
+    setCart([]);
+    localStorage.setItem("cart", "[]");
+  };
+
   const updateCart = (updatedCart) => {
     setCart(updatedCart);
   };
@@ -96,6 +101,7 @@ export const CartProvider = ({ children }) => {
         toggleAllChecked,
         toggleItemChecked,
         productTotal,
+        clearCart,
       }}
     >
       {children}
