@@ -13,8 +13,6 @@ const Cart = () => {
   const { cart, checked, toggleAllChecked, toggleItemChecked, productTotal } =
     useContext(CartContext);
 
-  console.log("카트데이터", cart);
-
   const [deliveryCharge, setDeliveryCharge] = useState(3000);
   const [totalPrice, setTotalPrice] = useState(0);
 
@@ -52,12 +50,9 @@ const Cart = () => {
               <div className="step">1</div>
               <span>장바구니</span>
             </div>
-            <div className="stepTwo">
-              <div className="step">2</div>
-              <span>주문 / 결제</span>
-            </div>
+
             <div className="stepThree">
-              <div className="step">3</div>
+              <div className="step">2</div>
               <span>주문완료</span>
             </div>
           </div>
