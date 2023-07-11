@@ -61,9 +61,11 @@ const Header = () => {
                 <li className="userItem" onClick={handleClick}>
                   로그아웃
                 </li>
-                <li className="userItem">마이페이지</li>
-                <Link to={"/admin"}>
-                  <li className="userItem">관리자페이지</li>
+                <Link to={"/orderhistory"} className="userItem">
+                  <li>주문내역</li>
+                </Link>
+                <Link to={"/admin"} className="userItem">
+                  <li>관리자페이지</li>
                 </Link>
               </>
             ) : (

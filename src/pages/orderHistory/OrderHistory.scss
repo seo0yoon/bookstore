@@ -16,65 +16,50 @@
     margin: 0 auto;
     display: flex;
 
-    .productAll {
+    .orderProcess {
+      display: flex;
+      align-items: center;
       margin: 50px 0 20px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: flex-end;
 
-      .product {
+      .stepOne,
+      .stepTwo {
         display: flex;
         align-items: center;
-        cursor: pointer;
+        font-size: 15px;
+        margin-right: 10px;
+        color: #969696;
+        font-weight: 400;
 
-        .checkIcon {
-          margin-right: 6px;
-          font-size: 25px;
+        .step {
+          background-color: #d0d0d0;
+          color: #fff;
+          border-radius: 50%;
+          width: 20px;
+          height: 20px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-right: 5px;
         }
       }
 
-      .orderProcess {
-        display: flex;
-        align-items: center;
+      .stepTwo {
+        color: #2e2e2e;
+        font-weight: 700;
 
-        .stepOne,
-        .stepTwo,
-        .stepThree {
+        .step {
+          background-color: #4dac27;
+          color: #fff;
+          border-radius: 50%;
+          width: 20px;
+          height: 20px;
           display: flex;
+          justify-content: center;
           align-items: center;
-          font-size: 15px;
-          margin-right: 10px;
-          color: #969696;
-          font-weight: 400;
-
-          .step {
-            background-color: #d0d0d0;
-            color: #fff;
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-right: 5px;
-          }
-        }
-
-        .stepOne {
-          color: #2e2e2e;
-          font-weight: 700;
-
-          .step {
-            background-color: #4dac27;
-            color: #fff;
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-right: 5px;
-          }
+          margin-right: 5px;
         }
       }
     }
@@ -85,7 +70,6 @@
       padding: 16px 20px;
       background-color: #f7f7f7;
       box-sizing: border-box;
-      margin-bottom: 50px;
 
       .headerDate {
         font-size: 16px;
@@ -101,6 +85,17 @@
         line-height: 22px;
         letter-spacing: -0.01em;
         font-weight: 500;
+      }
+    }
+
+    .order {
+      display: flex;
+      align-items: center;
+      padding: 20px 0;
+
+      .orderTitle {
+        font-size: 16px;
+        font-weight: 700;
       }
     }
 
@@ -136,53 +131,28 @@
       }
     }
 
-    .priceBlock {
-      .blockTitle {
-        padding: 20px 0;
+    .delivery {
+      padding: 20px 0;
+      border-bottom: 1px solid #e5e5e5;
+
+      .deliveryTitle {
+        font-size: 14px;
+        font-weight: 500;
+        margin-right: 10px;
+      }
+    }
+
+    .deliveryPrice {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 0;
+      border-bottom: 1px solid #e5e5e5;
+
+      .price {
+        font-size: 14px;
         font-weight: 700;
-        font-size: 17px;
-      }
-
-      .productPrice {
-        display: flex;
-        justify-content: space-between;
-        border-top: 1px solid #2e2e2e;
-        padding: 20px 0;
-
-        .priceContext {
-        }
-
-        .price {
-        }
-      }
-
-      .deliveryCharge {
-        display: flex;
-        justify-content: space-between;
-        padding: 20px 0;
-
-        .priceContext {
-        }
-
-        .price {
-        }
-      }
-
-      .totalPrice {
-        display: flex;
-        justify-content: space-between;
-        border-top: 1px solid #2e2e2e;
-        padding: 20px 0;
-
-        .priceContext {
-          color: #4dac27;
-          font-weight: 700;
-        }
-
-        .price {
-          font-size: 24px;
-          font-weight: 700;
-        }
+        margin-right: 10px;
       }
     }
   }
