@@ -30,8 +30,13 @@
 .searchBtn {
   font-size: 20px;
   color: #5055b1;
+  cursor: pointer;
 
   @media (max-width: 48em) {
     display: none;
+  }
+
+  &:hover {
+    color: #151853;
   }
 }

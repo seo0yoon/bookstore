@@ -71,11 +71,6 @@ const Header = () => {
             신상품
           </Link>
         </li>
-        <li className="menuItem">
-          <Link to={{ pathname: "/booklist", search: "?tab=newbooks" }}>
-            신상품
-          </Link>
-        </li>
 
         <ul className="userContainer">
           {user ? (

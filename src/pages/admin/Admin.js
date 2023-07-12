@@ -173,27 +173,6 @@ const Admin = () => {
       </div>
 
       <div className="adminBookListContent">
-        <div className="sideBarBox">
-          <div className="sideBarFilter">
-            <div className="varietys">
-              <div className="itemTitle">추가 목록</div>
-
-              <div className="itemWrap">
-                <div className="item">전체 도서 목록</div>
-                <AiOutlinePlus />
-              </div>
-
-              <div className="itemWrap">
-                <div className="item">베스트셀러</div>
-                <AiOutlinePlus />
-              </div>
-              <div className="itemWrap">
-                <div className="item">신상품</div>
-                <AiOutlinePlus />
-              </div>
-            </div>
-          </div>
-        </div>
         <div className="bookListSectin">
           <div className="items">
             {books.map((book) => (

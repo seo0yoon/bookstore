@@ -5,11 +5,13 @@ import {
   getBooks,
   getBestsellerBooks,
   getNewBooks,
+  searchBooks,
 } from "../../firebase/firestore";
 
 import BookListItem from "../../components/bookList/BookListItem";
 import BestsellerListItem from "../../components/bestsellerList/BestsellerListItem";
 import NewBookListItem from "../../components/newBookList/NewBookListItem";
+import SearchBookListItem from "../../components/searchBookList/SearchBookListItem";
 
 import { AiOutlinePlus } from "react-icons/ai";
 
@@ -23,6 +25,7 @@ const BookList = () => {
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
     const tab = searchParams.get("tab");
+    const query = searchParams.get("query");
 
     if (tab === "bestseller") {
       fetchBestsellerBooks();
@@ -30,6 +33,9 @@ const BookList = () => {
     } else if (tab === "newbooks") {
       fetchNewBooks();
       setActiveTab("신상품");
+    } else if (tab === "search") {
+      fetchSearchBooks(query);
+      setActiveTab("검색결과");
     } else {
       fetchBooks();
       setActiveTab("전체보기");
@@ -52,6 +58,12 @@ const BookList = () => {
     const newBooksData = await getNewBooks();
     setBooks(newBooksData);
     console.log("신상", newBooksData);
+  };
+
+  const fetchSearchBooks = async (query) => {
+    const searchedBooksData = await searchBooks(query);
+    setBooks(searchedBooksData);
+    console.log("검색", searchedBooksData);
   };
 
   return (
@@ -99,6 +111,13 @@ const BookList = () => {
             {activeTab === "신상품" &&
               books.map((book) => (
                 <NewBookListItem key={book.id} book={book} />
+              ))}
+            {activeTab === "검색결과" && books.length === 0 && (
+              <div>검색된 결과가 없습니다.</div>
+            )}
+            {activeTab === "검색결과" &&
+              books.map((book) => (
+                <SearchBookListItem key={book.id} book={book} />
               ))}
           </div>
         </div>
