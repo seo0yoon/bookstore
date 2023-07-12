@@ -1,6 +1,5 @@
 import React from "react";
-
-import BestSellersItem from "./bestSellersItem/BestSellersItem";
+import BestsellerListItem from "../../bestsellerList/BestsellerListItem";
 
 import "./MainBestSellers.scss";
 
@@ -13,7 +12,7 @@ const MainBestSellers = ({ bestseller }) => {
 
       <div className="items">
         {bestseller.map((book) => (
-          <BestSellersItem key={book.id} book={book} />
+          <BestsellerListItem key={book.id} book={book} />
         ))}
       </div>
     </div>
