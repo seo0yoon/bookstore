@@ -82,4 +82,16 @@ export const getOrders = async () => {
   return ordersList;
 };
 
+export const searchBooks = async (searchTerm) => {
+  const booksRef = collection(db, "books");
+  const querySnapshot = await getDocs(booksRef);
+  const booksList = querySnapshot.docs
+    .map((doc) => ({ id: doc.id, ...doc.data() }))
+    .filter(
+      (book) =>
+        book.title.includes(searchTerm) || book.author.includes(searchTerm)
+    );
+  return booksList;
+};
+
 export default db;

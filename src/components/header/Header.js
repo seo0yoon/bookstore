@@ -1,7 +1,13 @@
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
+
 import { AuthContext } from "../../contexts/AuthContext";
 import { CartContext } from "../../contexts/CartContext";
+import {
+  getBooks,
+  getBestsellerBooks,
+  getNewBooks,
+} from "../../firebase/firestore";
 
 import Logo from "../logo/Logo";
 
@@ -12,6 +18,7 @@ import "./Header.scss";
 import SearchBar from "../main/searchBar/SearchBar";
 
 const Header = () => {
+  const [books, setBooks] = useState([]);
   const [click, setClick] = useState(false);
   const { user, logout, loading } = useContext(AuthContext);
   const { cart } = useContext(CartContext);
@@ -20,6 +27,24 @@ const Header = () => {
     if (user) {
       logout();
     }
+  };
+
+  const fetchBooks = async () => {
+    const books = await getBooks();
+    setBooks(books);
+    console.log("전체", books);
+  };
+
+  const fetchBestsellerBooks = async () => {
+    const bestsellerBooks = await getBestsellerBooks();
+    setBooks(bestsellerBooks);
+    console.log("베스트", bestsellerBooks);
+  };
+
+  const fetchNewBooks = async () => {
+    const newBooks = await getNewBooks();
+    setBooks(newBooks);
+    console.log("신상", newBooks);
   };
 
   return (
@@ -55,12 +80,21 @@ const Header = () => {
       </nav>
 
       <ul className="menu">
-        <Link to={"booklist"}>
-          <li className="menuItem">전체보기</li>
-        </Link>
-        <li className="menuItem">베스트셀러</li>
-        <li className="menuItem">신상품</li>
-        <li className="menuItem">인기도서</li>
+        <li className="menuItem">
+          <Link to={{ pathname: "/booklist", search: "?list=all" }}>
+            전체보기
+          </Link>
+        </li>
+        <li className="menuItem">
+          <Link to={{ pathname: "/booklist", search: "?tab=bestseller" }}>
+            베스트셀러
+          </Link>
+        </li>
+        <li className="menuItem">
+          <Link to={{ pathname: "/booklist", search: "?tab=newbooks" }}>
+            신상품
+          </Link>
+        </li>
 
         <ul className="userContainer">
           {user ? (
