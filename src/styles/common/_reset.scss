@@ -136,11 +136,15 @@ strong {
   font-weight: bold;
 }
 
-input,
 textarea,
 select,
 button {
   border: none;
   outline: none;
   cursor: pointer;
+}
+
+input {
+  border: none;
+  outline: none;
 }

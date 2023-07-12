@@ -57,9 +57,14 @@ export const addBook = async (book) => {
   await addDoc(booksRef, book);
 };
 
-export const updateBook = async (bookId, updatedBook) => {
-  const bookRef = doc(db, "books", bookId);
-  await updateDoc(bookRef, updatedBook);
+export const updateBook = async (book) => {
+  const bookRef = doc(db, "books", book.id);
+  await updateDoc(bookRef, {
+    title: book.title,
+    author: book.author,
+    price: book.price,
+    publicationDate: book.publicationDate,
+  });
 };
 
 export const deleteBook = async (bookId) => {

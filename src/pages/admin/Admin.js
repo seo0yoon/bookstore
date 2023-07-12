@@ -1,56 +1,12 @@
-// import React from "react";
-// import { useForm } from "react-hook-form";
-// import { addBook } from "../../firebase/firestore";
-
-// const Admin = () => {
-//   const {
-//     register,
-//     handleSubmit,
-//     formState: { errors },
-//   } = useForm();
-
-//   const onSubmit = async (data) => {
-//     try {
-//       await addBook(data);
-//       alert("Book has been successfully added!");
-//     } catch (error) {
-//       console.error("Error adding book: ", error);
-//     }
-//   };
-
-//   return (
-//     <div className="Admin">
-//       <h2>새로운 책 추가</h2>
-//       <form onSubmit={handleSubmit(onSubmit)}>
-//         <label>제목:</label>
-//         <input {...register("title", { required: true })} />
-//         {errors.title && <p>This field is required</p>}
-
-//         <label>저자:</label>
-//         <input {...register("author", { required: true })} />
-//         {errors.author && <p>This field is required</p>}
-
-//         <label>가격:</label>
-//         <input type="number" {...register("price", { required: true })} />
-//         {errors.price && <p>This field is required</p>}
-
-//         <button type="submit">추가하기</button>
-//       </form>
-//     </div>
-//   );
-// };
-
-// export default Admin;
-
 import React, { useState, useEffect } from "react";
 import {
-  getBestsellerBooks,
+  getBooks,
   addBook,
-  updateBook,
   deleteBook,
+  updateBook,
 } from "../../firebase/firestore";
 
-import BookListItem from "../../components/bookList/BookListItem";
+import AdminItem from "../../components/admin/AdminItem";
 
 import { AiOutlinePlus } from "react-icons/ai";
 
@@ -61,9 +17,11 @@ const Admin = () => {
   const [selectedBook, setSelectedBook] = useState(null);
   const [bookTitle, setBookTitle] = useState("");
   const [bookAuthor, setBookAuthor] = useState("");
+  const [bookPrice, setBookPrice] = useState("");
+  const [bookpublicationDate, setBookPublicationDate] = useState("");
 
   const fetchBooks = async () => {
-    const books = await getBestsellerBooks();
+    const books = await getBooks();
     setBooks(books);
   };
 
@@ -71,36 +29,85 @@ const Admin = () => {
     fetchBooks();
   }, []);
 
-  const handleBookSelect = (book) => {
+  const handleBookAdd = async () => {
+    if (!bookTitle || !bookAuthor || !bookPrice || !bookpublicationDate) {
+      alert("모든 필드를 채워주세요.");
+      return;
+    }
+
+    await addBook({
+      title: bookTitle,
+      author: bookAuthor,
+      price: bookPrice,
+      publicationDate: bookpublicationDate,
+    });
+    fetchBooks();
+    console.log("추가 완료");
+    alert("추가 되었습니다.");
+  };
+
+  const handleBookDelete = async (bookId) => {
+    if (window.confirm("삭제하시겠습니까?")) {
+      await deleteBook(bookId);
+      fetchBooks();
+      console.log("삭제 완료");
+      alert("삭제되었습니다.");
+    } else {
+      alert("취소되었습니다.");
+    }
+  };
+
+  const handleBookClick = (book) => {
     setSelectedBook(book);
     setBookTitle(book.title);
     setBookAuthor(book.author);
+    setBookPrice(book.price);
+    setBookPublicationDate(book.publicationDate);
   };
 
-  const handleBookAdd = async () => {
-    await addBook({ title: bookTitle, author: bookAuthor });
+  const handleBookSave = async () => {
+    if (!bookTitle || !bookAuthor || !bookPrice || !bookpublicationDate) {
+      alert("모든 필드를 채워주세요.");
+      return;
+    }
+
+    if (selectedBook) {
+      const isModified =
+        selectedBook.title !== bookTitle ||
+        selectedBook.author !== bookAuthor ||
+        selectedBook.price !== bookPrice ||
+        selectedBook.publicationDate !== bookpublicationDate;
+
+      if (!isModified) {
+        alert("변경된 내용이 없습니다.");
+        return;
+      }
+
+      await updateBook({
+        id: selectedBook.id,
+        title: bookTitle,
+        author: bookAuthor,
+        price: bookPrice,
+        publicationDate: bookpublicationDate,
+      });
+      console.log("수정 완료");
+      alert("수정 되었습니다.");
+    } else {
+      await addBook({
+        title: bookTitle,
+        author: bookAuthor,
+        price: bookPrice,
+        publicationDate: bookpublicationDate,
+      });
+      console.log("추가 완료");
+      alert("추가 되었습니다.");
+    }
+
     fetchBooks();
   };
 
-  const handleBookUpdate = async () => {
-    if (selectedBook) {
-      await updateBook(selectedBook.id, {
-        title: bookTitle,
-        author: bookAuthor,
-      });
-      fetchBooks();
-    }
-  };
-
-  const handleBookDelete = async () => {
-    if (selectedBook) {
-      await deleteBook(selectedBook.id);
-      fetchBooks();
-    }
-  };
-
   return (
-    <div className="bookListContainer">
+    <div className="adminBookListContainer">
       <div className="bookListInputBox">
         <div className="bookForm">
           <input
@@ -117,30 +124,59 @@ const Admin = () => {
           />
           <input
             type="text"
-            value={bookAuthor}
-            onChange={(e) => setBookAuthor(e.target.value)}
+            value={bookPrice}
+            onChange={(e) => setBookPrice(e.target.value)}
             placeholder="가격"
           />
           <input
-            type="text"
-            value={bookAuthor}
-            onChange={(e) => setBookAuthor(e.target.value)}
+            type="date"
+            value={bookpublicationDate}
+            onChange={(e) => setBookPublicationDate(e.target.value)}
             placeholder="발행일"
           />
         </div>
-
         <div className="btnBox">
-          <button className="addBtn" onClick={handleBookAdd}>
+          <button
+            className="addBtn"
+            onClick={handleBookAdd}
+            disabled={!!selectedBook}
+          >
             추가하기
           </button>
+          <button
+            className="updateBtn"
+            onClick={handleBookSave}
+            disabled={!selectedBook}
+          >
+            수정하기
+          </button>
+          {selectedBook && (
+            <button
+              className="cancelSelectBtn"
+              onClick={() => {
+                setSelectedBook(null);
+                setBookTitle("");
+                setBookAuthor("");
+                setBookPrice("");
+                setBookPublicationDate("");
+              }}
+            >
+              선택해제
+            </button>
+          )}
         </div>
+        {!selectedBook && (
+          <div className="instructions">
+            * 도서를 수정하려면, 먼저 도서 목록에서 원하는 도서를 선택해주세요.
+          </div>
+        )}
       </div>
 
-      <div className="bookListContent">
+      <div className="adminBookListContent">
         <div className="sideBarBox">
           <div className="sideBarFilter">
             <div className="varietys">
-              <div className="itemTitle">목록</div>
+              <div className="itemTitle">추가 목록</div>
 
               <div className="itemWrap">
                 <div className="item">전체 도서 목록</div>
@@ -161,7 +197,12 @@ const Admin = () => {
         <div className="bookListSectin">
           <div className="items">
             {books.map((book) => (
-              <BookListItem key={book.id} book={book} />
+              <AdminItem
+                key={book.id}
+                book={book}
+                handleBookDelete={handleBookDelete}
+                handleBookClick={handleBookClick}
+              />
             ))}
           </div>
         </div>
