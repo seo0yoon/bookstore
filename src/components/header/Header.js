@@ -56,7 +56,7 @@ const Header = () => {
 
       <ul className="menu">
         <Link to={"booklist"}>
-          <li className="menuItem">책 구매하기</li>
+          <li className="menuItem">전체보기</li>
         </Link>
         <li className="menuItem">베스트셀러</li>
         <li className="menuItem">신상품</li>

@@ -1,0 +1,118 @@
+@import "../../../src/styles/global.scss";
+
+.bookListContainer {
+  min-height: calc(100vh - $nav-height);
+  width: 100%;
+  position: relative;
+  flex-direction: column;
+}
+
+.bookListInputBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(230, 230, 230);
+  width: 100%;
+  font-size: $font-md;
+  color: $color-text;
+
+  @media (max-width: 48em) {
+    align-self: center;
+    text-align: center;
+  }
+}
+
+.bookForm {
+  display: flex;
+  width: 60%;
+
+  input {
+    width: 100%;
+    margin: 1em 0;
+    padding: 1em;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-right: 10px;
+  }
+}
+
+.btnBox {
+  .addBtn {
+    padding: 0.5em 1em;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    background-color: #1ac37d;
+    margin-right: 10px;
+  }
+}
+
+.bookListContent {
+  display: flex;
+  gap: 38.4px;
+  margin-top: 80px;
+  width: 100%;
+
+  @media (max-width: 64em) {
+    width: 100%;
+  }
+
+  @media (max-width: 48em) {
+    width: 100%;
+  }
+
+  .sideBarBox {
+    display: flex;
+    flex-direction: column;
+    width: 369.6px;
+
+    .sideBarFilter {
+      display: flex;
+      flex-direction: column;
+      row-gap: 56px;
+
+      .varietys {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        .itemTitle {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: 100%;
+          height: 3.5rem;
+          background-color: rgb(230, 230, 230);
+          padding: 0 1rem;
+          font-size: $font-md;
+          color: $color-text;
+
+          @media (max-width: 48em) {
+            align-self: center;
+            text-align: center;
+          }
+        }
+
+        .itemWrap {
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          cursor: pointer;
+          padding: 0 1rem;
+
+          .item {
+            border-bottom: 1px solid #f0f0f0;
+            height: 45px;
+            margin-top: 27px;
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+
+  .bookListSectin {
+    width: calc(100% - 408px);
+  }
+}
