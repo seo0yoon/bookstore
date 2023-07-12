@@ -21,7 +21,7 @@ const SearchBar = () => {
     const results = await searchBooks(searchTerm);
     setSearchResults(results);
 
-    console.log(results);
+    console.log("검색결과", results);
   };
 
   return (
