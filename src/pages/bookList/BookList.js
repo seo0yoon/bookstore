@@ -45,25 +45,21 @@ const BookList = () => {
   const fetchBooks = async () => {
     const booksData = await getBooks();
     setBooks(booksData);
-    console.log("전체", booksData);
   };
 
   const fetchBestsellerBooks = async () => {
     const bestsellerBooksData = await getBestsellerBooks();
     setBooks(bestsellerBooksData);
-    console.log("베스트", bestsellerBooksData);
   };
 
   const fetchNewBooks = async () => {
     const newBooksData = await getNewBooks();
     setBooks(newBooksData);
-    console.log("신상", newBooksData);
   };
 
   const fetchSearchBooks = async (query) => {
     const searchedBooksData = await searchBooks(query);
     setBooks(searchedBooksData);
-    console.log("검색", searchedBooksData);
   };
 
   return (
