@@ -27,8 +27,8 @@ const NewBookListItem = ({ book }) => {
   };
 
   return (
-    <div className="newBookListItem">
-      <div
+    <article className="newBookListItem">
+      <section
         className="itemContents"
         onMouseOver={() => setIsOptionOpen(true)}
         onMouseOut={() => setIsOptionOpen(false)}
@@ -37,7 +37,7 @@ const NewBookListItem = ({ book }) => {
           <img className="bookImg" src={book.imageURL} alt="" />
           <div className="badgeTop">sale</div>
           <div className="badgeBottom">-10%</div>
-          <div
+          <nav
             className={`options ${isOptionOpen ? "openOption" : "closeOption"}`}
           >
             <ul className="lists">
@@ -53,21 +53,21 @@ const NewBookListItem = ({ book }) => {
                 <CartModal message={message} />
               </li>
             </ul>
-          </div>
+          </nav>
         </div>
-        <div className="bottomContext">
-          <div className="bottomTitle">{book.title}</div>
+        <section className="bottomContext">
+          <h3 className="bottomTitle">{book.title}</h3>
           <div className="bottomPrice">
             <span className="prePrice">{book.price}</span>
             <span className="salePrice">{book.price}</span>
           </div>
-        </div>
-        <div className="bottomDetail">
+        </section>
+        <section className="bottomDetail">
           <span className="bottomAuthor">{book.author}</span>
           <span className="bottomPublicationDate">{book.publicationDate}</span>
-        </div>
-      </div>
-    </div>
+        </section>
+      </section>
+    </article>
   );
 };
 

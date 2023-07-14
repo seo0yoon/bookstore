@@ -1,27 +1,23 @@
 @import "../../../src/styles/global.scss";
 
 .newBookListItem {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flexCenter;
   width: 25%;
 
   .itemContents {
     width: 250px;
-    box-shadow: 0 0 10px 0 rgb(0 0 0 / 8%);
-    border: 1px solid #f1f1f1;
     margin-bottom: 14px;
+    border: 1px solid #f1f1f1;
+    box-shadow: 0 0 10px 0 rgb(0 0 0 / 8%);
 
     .content {
+      @include flexCenter;
       position: relative;
-      font-size: 14px;
       width: 100%;
       height: 300px;
       background-color: #fff;
+      font-size: 14px;
       overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       cursor: pointer;
 
       .bookImg {
@@ -34,15 +30,15 @@
         position: absolute;
         right: 5px;
         width: 50px;
-        background-color: #ff6162;
-        padding: 3px 8px;
-        color: #fff;
         min-width: 50px;
-        text-align: center;
-        font-size: 10.5px;
-        line-height: 15px;
-        font-weight: 600;
+        padding: 3px 8px;
         margin-bottom: 5px;
+        background-color: #ff6162;
+        color: #fff;
+        font-size: 10.5px;
+        font-weight: 600;
+        text-align: center;
+        line-height: 15px;
       }
 
       .badgeTop {
@@ -55,19 +51,18 @@
 
       .options {
         @include flexColumn;
-        width: 100%;
-        height: 135px;
-        background-color: #fff;
+        align-items: flex-end;
         position: absolute;
         bottom: 0px;
         left: 0px;
-        transition: bottom 0.7s ease;
-        align-items: flex-end;
+        width: 100%;
+        height: 135px;
         padding: 26px 12px 23px 0;
+        background-color: #fff;
+        transition: bottom 0.7s ease;
 
         .lists {
           display: flex;
-          align-items: center;
           align-items: inherit;
           flex-direction: column;
           color: grey;
@@ -100,22 +95,22 @@
       margin-top: 26px;
 
       .bottomTitle {
+        max-height: 2.3em;
         font-size: 20px;
         line-height: 1.15;
         overflow-wrap: break-word;
-        max-height: 2.3em;
       }
 
       .bottomPrice {
+        color: grey;
         font-size: 16px;
         line-height: 1.43;
-        color: grey;
 
         .prePrice {
-          font-weight: 400;
-          font-size: 12.5px;
-          text-decoration: line-through;
           margin-right: 5px;
+          font-size: 12.5px;
+          font-weight: 400;
+          text-decoration: line-through;
         }
 
         .salePrice {
@@ -125,8 +120,8 @@
       }
 
       .bottomPrice {
-        line-height: 1.88;
         color: grey;
+        line-height: 1.88;
       }
     }
 
@@ -135,9 +130,9 @@
       color: grey;
 
       .bottomAuthor {
+        margin-right: 8px;
         font-size: 15px;
         line-height: 1.43;
-        margin-right: 8px;
       }
 
       .bottomPublicationDate {

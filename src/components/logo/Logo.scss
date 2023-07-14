@@ -1,6 +1,7 @@
 @import "../../../src/styles/global.scss";
 
 .logo-text {
+  @include flexCenter;
   font-family: "Akaya Telivigala", cursive;
   font-size: $font-xxl;
   font-weight: 700;

@@ -4,7 +4,7 @@ import "./Loading.scss";
 
 const Loading = () => {
   return (
-    <div className="loader">
+    <div className="loading">
       <div className="spinner">
         <div />
         <div />

@@ -10,10 +10,10 @@ SwiperCore.use([Pagination, Navigation]);
 
 const NewProduct = ({ newBooks }) => {
   return (
-    <div className="newProduct">
-      <div className="newProductTitle">
+    <section className="newProduct">
+      <header className="newProductTitle">
         <h2>화제의 신상</h2>
-      </div>
+      </header>
 
       <div className="swiperBox">
         <Swiper
@@ -39,10 +39,10 @@ const NewProduct = ({ newBooks }) => {
                 />
 
                 <div className="swiperSlideTitle">
-                  <h3>{book.title}</h3>
+                  <h4>{book.title}</h4>
                 </div>
                 <div className="swiperSlideAuthor">
-                  <h4>{book.author}</h4>
+                  <p>{book.author}</p>
                 </div>
               </div>
             </SwiperSlide>
@@ -67,7 +67,7 @@ const NewProduct = ({ newBooks }) => {
           ))}
         </Swiper>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -1,43 +1,37 @@
 @import "../../../src/styles/global.scss";
 
 .adminItem {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flexCenter;
   width: 25%;
 
   .itemContents {
+    position: relative;
     width: 250px;
     box-shadow: 0 0 10px 0 rgb(0 0 0 / 8%);
     border: 1px solid #f1f1f1;
     margin-bottom: 14px;
-    position: relative;
 
     .closeBtn {
+      @include flexCenter;
       position: absolute;
       top: 0;
       right: 0;
       width: 26px;
       height: 26px;
-      background-color: #ff6162;
       border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
+      background-color: #ff6162;
       color: #fff;
       font-size: 20px;
+      cursor: pointer;
     }
 
     .bottomContext {
-      position: relative;
       margin-top: 26px;
 
       .imgWrap {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        @include flexCenter;
         margin-bottom: 20px;
+
         .bookImg {
           width: 60%;
           height: 70%;
@@ -45,22 +39,22 @@
       }
 
       .bottomTitle {
+        max-height: 2.3em;
         font-size: 20px;
         line-height: 1.15;
         overflow-wrap: break-word;
-        max-height: 2.3em;
       }
 
       .bottomPrice {
-        font-size: 16px;
-        line-height: 1.43;
         color: grey;
+        font-size: $font-md;
+        line-height: 1.43;
 
         .prePrice {
-          font-weight: 400;
-          font-size: 12.5px;
-          text-decoration: line-through;
           margin-right: 5px;
+          font-weight: 400;
+          font-size: $font-xs;
+          text-decoration: line-through;
         }
 
         .salePrice {
@@ -70,8 +64,8 @@
       }
 
       .bottomPrice {
-        line-height: 1.88;
         color: grey;
+        line-height: 1.88;
       }
     }
 
@@ -80,13 +74,13 @@
       color: grey;
 
       .bottomAuthor {
-        font-size: 15px;
-        line-height: 1.43;
         margin-right: 8px;
+        font-size: $font-sm;
+        line-height: 1.43;
       }
 
       .bottomPublicationDate {
-        font-size: 15px;
+        font-size: $font-sm;
         line-height: 1.43;
       }
     }
@@ -94,19 +88,19 @@
 }
 
 @media (max-width: 62em) {
-  .item {
-    width: 50%;
+  .adminItem {
+    width: 33%;
   }
 }
 
 @media (max-width: 48em) {
-  .item {
+  .adminItem {
     width: 50%;
   }
 }
 
 @media (max-width: 38em) {
-  .item {
+  .adminItem {
     width: 100%;
   }
 }

@@ -24,20 +24,45 @@ const Header = () => {
   };
 
   return (
-    <section className={`header ${click ? "active" : ""}`}>
-      <nav className="navBar">
+    <header className={`header ${click ? "active" : ""}`}>
+      <nav className="hearderContainer">
+        <ul className="userInfoContainer">
+          {user ? (
+            <>
+              <li className="userInfoItem" onClick={handleClick}>
+                로그아웃
+              </li>
+              <Link to={"/orderhistory"} className="userInfoItem">
+                <li>주문내역</li>
+              </Link>
+              <Link to={"/admin"} className="userInfoItem">
+                <li>관리자페이지</li>
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link to={"/login"} className="userInfoItem">
+                <li>로그인</li>
+              </Link>
+              <Link to={"/signup"} className="userInfoItem">
+                <li>회원가입</li>
+              </Link>
+            </>
+          )}
+        </ul>
         <Logo />
-        <span className="hamburgerMenu" onClick={() => setClick(!click)}>
+        <button
+          className="mobileHamburgerMenu"
+          onClick={() => setClick(!click)}
+        >
           &nbsp;
-        </span>
-
+        </button>
         <SearchBar />
-
-        <div className="desktop">
+        <div className="desktopMenu">
           {loading ? (
             <div>Loading...</div>
           ) : (
-            <>
+            <section>
               <Link to={"/cart"} className="cartWrap">
                 <BsBagCheck className="cartIcon" />
                 {cart.length > 0 && (
@@ -50,54 +75,31 @@ const Header = () => {
               ) : (
                 <BiSolidUser className="loginUserIcon" />
               )}
-            </>
+            </section>
           )}
         </div>
       </nav>
 
-      <ul className="menu">
-        <li className="menuItem">
-          <Link to={{ pathname: "/booklist", search: "?tab=all" }}>
-            전체보기
-          </Link>
-        </li>
-        <li className="menuItem">
-          <Link to={{ pathname: "/booklist", search: "?tab=bestseller" }}>
-            베스트셀러
-          </Link>
-        </li>
-        <li className="menuItem">
-          <Link to={{ pathname: "/booklist", search: "?tab=newbooks" }}>
-            신상품
-          </Link>
-        </li>
-
-        <ul className="userContainer">
-          {user ? (
-            <>
-              <li className="userItem" onClick={handleClick}>
-                로그아웃
-              </li>
-              <Link to={"/orderhistory"} className="userItem">
-                <li>주문내역</li>
-              </Link>
-              <Link to={"/admin"} className="userItem">
-                <li>관리자페이지</li>
-              </Link>
-            </>
-          ) : (
-            <>
-              <Link to={"/login"} className="userItem">
-                <li>로그인</li>
-              </Link>
-              <Link to={"/signup"} className="userItem">
-                <li>회원가입</li>
-              </Link>
-            </>
-          )}
+      <nav className="headerMenu">
+        <ul>
+          <li className="menuItem">
+            <Link to={{ pathname: "/booklist", search: "?tab=all" }}>
+              전체보기
+            </Link>
+          </li>
+          <li className="menuItem">
+            <Link to={{ pathname: "/booklist", search: "?tab=bestseller" }}>
+              베스트셀러
+            </Link>
+          </li>
+          <li className="menuItem">
+            <Link to={{ pathname: "/booklist", search: "?tab=newbooks" }}>
+              신상품
+            </Link>
+          </li>
         </ul>
-      </ul>
-    </section>
+      </nav>
+    </header>
   );
 };
 

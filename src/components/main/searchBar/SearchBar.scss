@@ -1,35 +1,30 @@
 @import "../../../../src/styles/global.scss";
 
-.searchBarBox {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.searchBar {
+  @include flexBetween;
   width: 48%;
   height: 3rem;
+  padding: 0 1rem;
   border-radius: 0.5rem;
   border: 1px solid #5055b1;
-  padding: 0 1rem;
-  font-size: $font-md;
   color: $color-text;
+  font-size: $font-md;
 
   @media (max-width: 48em) {
     display: none;
   }
 
-  .searchBar {
+  .searchBarInput {
     width: 100%;
     height: 100%;
-    border: none;
-    background-color: transparent;
     color: $color-text;
     font-size: $font-md;
-    outline: none;
   }
 }
 
 .searchBtn {
-  font-size: 20px;
   color: #5055b1;
+  font-size: 20px;
   cursor: pointer;
 
   @media (max-width: 48em) {

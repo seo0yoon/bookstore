@@ -1,5 +1,6 @@
-import LoginButton from "../../components/loginForm/loginButton/LoginButton";
 import React from "react";
+
+import LoginButton from "../../components/loginForm/loginButton/LoginButton";
 
 import "./LoginForm.scss";
 
@@ -18,17 +19,23 @@ const LoginForm = ({
   };
 
   return (
-    <div className="inputBox">
-      <div className="inputText">아이디</div>
+    <section className="loginForm">
+      <label htmlFor="userId" className="inputText">
+        아이디
+      </label>
       <input
+        id="userId"
         className="input"
         placeholder="이메일을 입력해주세요."
         value={id}
         onChange={onEmailChange}
         onKeyPress={onKeyPress}
       />
-      <div className="inputText">비밀번호</div>
+      <label htmlFor="userPassword" className="inputText">
+        비밀번호
+      </label>
       <input
+        id="userPassword"
         className="input"
         placeholder="비밀번호를 입력해주세요."
         type="password"
@@ -36,9 +43,9 @@ const LoginForm = ({
         onChange={onPasswordChange}
         onKeyPress={onKeyPress}
       />
-      <div className="errorMessage">{error}</div>
+      {error && <p className="errorMessage">{error}</p>}
       <LoginButton onLogin={onLogin} />
-    </div>
+    </section>
   );
 };
 

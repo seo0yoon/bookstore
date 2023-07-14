@@ -14,7 +14,7 @@ const OrderModal = ({ saveOrder }) => {
   };
 
   return (
-    <div className="orderModal">
+    <section className="orderModal">
       <button className="checkOutBtn" onClick={handleOrder}>
         주문하기
       </button>
@@ -38,7 +38,7 @@ const OrderModal = ({ saveOrder }) => {
           </div>
         </div>
       )}
-    </div>
+    </section>
   );
 };
 

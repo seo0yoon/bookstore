@@ -1,59 +1,55 @@
 @import "../../../src/styles/global.scss";
 
-.footerSection {
-  min-height: 30vh;
+.footer {
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  background-color: $color-background;
-  color: $color-text;
-  display: flex;
-  flex-direction: column;
+  min-height: 30vh;
   margin-top: 130px;
-}
+  color: $color-text;
+  background-color: $color-background;
 
-.footerContainer {
-  width: 75%;
-  margin: 4rem auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid $color-text;
+  .footerContainer {
+    @include flexBetween;
+    width: 75%;
+    margin: 4rem auto;
+    border-bottom: 1px solid $color-text;
 
-  @media (max-width: 48em) {
-    width: 90%;
-    h1 {
-      font-size: $font-xxxl;
+    @media (max-width: 48em) {
+      width: 90%;
+
+      h1 {
+        font-size: $font-xxxl;
+      }
     }
-  }
-}
 
-.left {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+    .left {
+      @include flexColumn;
+      justify-content: center;
 
-  @media (max-width: 48em) {
-    width: 100%;
-  }
-}
+      @media (max-width: 48em) {
+        width: 100%;
+      }
+    }
 
-.iconList {
-  display: flex;
-  align-items: center;
-  margin: 1rem auto;
+    .iconList {
+      display: flex;
+      align-items: center;
+      margin: 1rem auto;
 
-  & > * {
-    padding-right: 0.5rem;
-    transition: all 0.2s ease;
+      & > * {
+        padding-right: 0.5rem;
+        transition: all 0.2s ease;
 
-    &:hover {
-      transform: scale(1.2);
+        &:hover {
+          transform: scale(1.2);
+        }
+      }
     }
   }
 }
 
 .footerMenuItems {
-  list-style: none;
   width: 50%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -63,32 +59,30 @@
   @media (max-width: 48em) {
     display: none;
   }
-}
 
-.footerItem {
-  width: fit-content;
-  cursor: pointer;
+  .footerItem {
+    width: fit-content;
+    cursor: pointer;
 
-  &::after {
-    content: " ";
-    display: block;
-    width: 0%;
-    height: 2px;
-    background: $color-text;
-    transition: width 0.3s ease;
-  }
+    &::after {
+      content: " ";
+      display: block;
+      width: 0%;
+      height: 2px;
+      background: $color-text;
+      transition: width 0.3s ease;
+    }
 
-  &:hover::after {
-    width: 100%;
+    &:hover::after {
+      width: 100%;
+    }
   }
 }
 
 .buttom {
+  @include flexBetween;
   width: 75%;
   margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 
   a {
     text-decoration: underline;

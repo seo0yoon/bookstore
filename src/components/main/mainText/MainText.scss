@@ -1,11 +1,11 @@
 @import "../../../../src/styles/global.scss";
 
 .title {
+  height: 3.6em;
+  color: $color-text;
   font-size: 2.8em;
   font-weight: 700;
   text-transform: capitalize;
-  height: 3.6em;
-  color: $color-text;
   align-self: flex-start;
 
   span {
@@ -22,12 +22,12 @@
   }
 }
 
-.sub-title {
-  font-size: $font-md;
-  text-transform: capitalize;
-  color: $color-darkgrey;
-  font-weight: 500;
+.subTitle {
   margin-bottom: 1rem;
+  color: $color-darkgrey;
+  font-size: $font-md;
+  font-weight: 500;
+  text-transform: capitalize;
   align-self: flex-start;
 
   @media (max-width: 40em) {

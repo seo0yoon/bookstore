@@ -19,7 +19,7 @@
 
     .agreeItemText {
       font-weight: 400;
-      font-size: 16px;
+      font-size: $font-md;
       line-height: 22px;
 
       .essential {
@@ -56,7 +56,7 @@
 
     .agreeItemText {
       font-weight: 400;
-      font-size: 16px;
+      font-size: $font-md;
       line-height: 22px;
       color: #000000;
 
@@ -70,9 +70,5 @@
         margin-left: 5px;
       }
     }
-  }
-
-  .triangleIcon {
-    // @include triangleIcon;
   }
 }

@@ -1,13 +1,11 @@
 @import "../../../../src/styles/global.scss";
 
 .banner {
+  @include flexCenter;
   width: 100%;
   margin: 120px 0 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 
-  @media (max-width: 48em) {
+  @media (max-width: 60em) {
     display: block;
   }
 
@@ -18,10 +16,14 @@
       margin-right: 0;
     }
 
-    .baanerImg {
+    .bannerImg {
       width: 100%;
       height: 100%;
       border-radius: 15px;
+    }
+
+    @media (max-width: 60em) {
+      margin-right: 0;
     }
   }
 }

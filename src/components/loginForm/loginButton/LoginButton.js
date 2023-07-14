@@ -1,5 +1,5 @@
-import { useNavigate } from "react-router-dom";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 import "./LoginButton.scss";
 
@@ -11,7 +11,7 @@ const Button = ({ onLogin }) => {
   };
 
   return (
-    <div className="buttonBox">
+    <div className="loginButton">
       <button className="loginBtn" onClick={onLogin}>
         로그인하기
       </button>

@@ -1,15 +1,13 @@
 @import "../../../styles/global.scss";
 
 .newProduct {
-  height: calc(100vh - $nav-height);
-  width: 100%;
-  background-color: $color-background;
   position: relative;
+  width: 100%;
+  height: calc(100vh - $nav-height);
+  background-color: $color-background;
 
   .newProductTitle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flexCenter;
     margin: 40px 0 120px;
 
     h2 {
@@ -40,14 +38,12 @@
     }
 
     .swiper-wrapper {
-      height: 480px;
       display: flex;
+      height: 480px;
     }
 
     .swiper-slide {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      @include flexCenter;
       flex-direction: column;
       transition: transform 0.5s ease-out;
     }
@@ -75,24 +71,22 @@
     }
 
     .swiper-button-next {
-      font-size: 26px;
       right: 50px;
+      font-size: 26px;
     }
 
     .swiper-button-prev {
-      font-size: 26px;
       left: 50px;
+      font-size: 26px;
     }
 
     .swiperSlideBox {
+      @include flexCenter;
+      flex-direction: column;
       width: 300px;
       height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      box-shadow: 0 0 10px 0 rgb(0 0 0 / 8%);
       border: 1px solid #f1f1f1;
+      box-shadow: 0 0 10px 0 rgb(0 0 0 / 8%);
 
       .swiperSlideImg {
         width: 197px;
@@ -101,9 +95,9 @@
       }
 
       .swiperSlideTitle {
+        margin: 20px 0 12px;
         font-size: $font-md;
         font-weight: 700;
-        margin: 20px 0 12px;
       }
 
       .swiperSlideAuthor {

@@ -9,8 +9,8 @@ import "./Footer.scss";
 
 const Footer = () => {
   return (
-    <div className="footerSection">
-      <div className="footerContainer">
+    <footer className="footer">
+      <section className="footerContainer">
         <div className="left">
           <Logo />
           <div className="iconList">
@@ -54,11 +54,11 @@ const Footer = () => {
           <li className="footerItem">신상품</li>
           <li className="footerItem">인기도서</li>
         </ul>
-      </div>
+      </section>
       <div className="buttom">
         <span>&copy; {new Date().getFullYear()} All rights reserved.</span>
       </div>
-    </div>
+    </footer>
   );
 };
 

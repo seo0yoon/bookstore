@@ -1,19 +1,19 @@
 @import "../../../src/styles/global.scss";
 
-.inputBox {
+.loginForm {
   display: flex;
   flex-direction: column;
   position: relative;
   width: 38%;
 
   .inputText {
-    font-size: 13px;
+    font-size: $font-xs;
   }
 
   .input {
     height: 48px;
-    padding: 13px 16px;
     margin: 10px 0 12px;
+    padding: 13px 16px;
     border-radius: 6px;
     border: 1px solid #e9e9e9;
     color: $color-text;
@@ -39,7 +39,7 @@
     left: 4px;
     color: #da5355;
     font-weight: 400;
-    font-size: 16px;
+    font-size: $font-md;
     line-height: 22px;
   }
 

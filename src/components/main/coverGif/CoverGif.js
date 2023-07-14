@@ -10,7 +10,7 @@ import "./CoverGif.scss";
 
 const CoverGif = () => {
   return (
-    <div className="gif-container">
+    <div className="gifContainer">
       <Carousel
         showArrows={true}
         autoPlay={true}
@@ -19,13 +19,13 @@ const CoverGif = () => {
         interval={3000}
       >
         <div>
-          <img src={image1} alt="111" />
+          <img src={image1} alt="main" />
         </div>
         <div>
-          <img src={image2} alt="222" />
+          <img src={image2} alt="main" />
         </div>
         <div>
-          <img src={image3} alt="333" />
+          <img src={image3} alt="main" />
         </div>
       </Carousel>
     </div>

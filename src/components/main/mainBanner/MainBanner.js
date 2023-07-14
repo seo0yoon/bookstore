@@ -7,15 +7,15 @@ import "./MainBanner.scss";
 
 const Banner = () => {
   return (
-    <div className="banner">
-      <div className="bannerContainer">
-        <img className="baanerImg" src={banner1} alt="banner left" />
-      </div>
+    <section className="banner">
+      <figure className="bannerContainer">
+        <img className="bannerImg" src={banner1} alt="banner left" />
+      </figure>
 
-      <div className="bannerContainer">
-        <img className="baanerImg" src={banner2} alt="banner right" />
-      </div>
-    </div>
+      <figure className="bannerContainer">
+        <img className="bannerImg" src={banner2} alt="banner right" />
+      </figure>
+    </section>
   );
 };
 

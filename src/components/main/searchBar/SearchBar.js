@@ -36,18 +36,18 @@ const SearchBar = () => {
   };
 
   return (
-    <div className="searchBarBox">
+    <div className="searchBar">
       <input
-        className="searchBar"
+        className="searchBarInput"
         type="text"
         value={searchTerm}
         onChange={handleInputChange}
         onKeyPress={handleKeyPress}
         placeholder="도서명 또는 저자이름으로 검색하세요."
       />
-      <div className="searchBtn" onClick={handleSearch}>
+      <button className="searchBtn" onClick={handleSearch}>
         <BsSearch />
-      </div>
+      </button>
     </div>
   );
 };

@@ -6,31 +6,33 @@ import "./AdminItem.scss";
 
 const AdminItem = ({ book, handleBookDelete, handleBookClick }) => {
   return (
-    <div className="adminItem" onClick={() => handleBookClick(book)}>
+    <article className="adminItem" onClick={() => handleBookClick(book)}>
       <div className="itemContents">
-        <AiOutlineClose
+        <button
           className="closeBtn"
           onClick={(e) => {
             e.stopPropagation();
             handleBookDelete(book.id);
           }}
-        />
-        <div className="bottomContext">
+        >
+          <AiOutlineClose />
+        </button>
+        <section className="bottomContext">
           <div className="imgWrap">
             <img className="bookImg" src={book.imageURL} alt="" />
           </div>
-          <div className="bottomTitle">{book.title}</div>
+          <h3 className="bottomTitle">{book.title}</h3>
           <div className="bottomPrice">
             <span className="prePrice">{book.price.toLocaleString()}원</span>
             <span className="salePrice">{book.price.toLocaleString()}원</span>
           </div>
-        </div>
-        <div className="bottomDetail">
+        </section>
+        <section className="bottomDetail">
           <span className="bottomAuthor">{book.author}</span>
           <span className="bottomPublicationDate">{book.publicationDate}</span>
-        </div>
+        </section>
       </div>
-    </div>
+    </article>
   );
 };
 
