@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  getBestsellerBooks,
-  getNewBooks,
-} from "../../../src/firebase/firestore";
+import { getBooks } from "../../../src/firebase/firestore";
 
 import MainText from "../../components/main/mainText/MainText";
 import CoverGif from "../../components/main/coverGif/CoverGif";
@@ -18,21 +15,21 @@ const Main = () => {
   const [newBooks, setNewBooks] = useState([]);
 
   useEffect(() => {
-    const fetchBooks = async () => {
-      const fetchedBestseller = await getBestsellerBooks();
+    const fetchBestsellerBooks = async () => {
+      const fetchedBestseller = await getBooks("bestseller"); // ensure "bestSeller" is correct type
       setBestseller(fetchedBestseller);
     };
 
-    fetchBooks();
+    fetchBestsellerBooks();
   }, []);
 
   useEffect(() => {
-    const fetchBooks = async () => {
-      const fetchedNewBooks = await getNewBooks();
+    const fetchNewBooks = async () => {
+      const fetchedNewBooks = await getBooks("new");
       setNewBooks(fetchedNewBooks);
     };
 
-    fetchBooks();
+    fetchNewBooks();
   }, []);
 
   return (

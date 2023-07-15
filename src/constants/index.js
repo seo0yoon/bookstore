@@ -31,6 +31,6 @@ export const SUB_MENU_ITEM = [
   {
     id: 3,
     text: "신상품",
-    query: "newbooks",
+    query: "new",
   },
 ];

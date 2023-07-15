@@ -7,9 +7,15 @@
   flex-direction: column;
 }
 
+.bookListTitle {
+  margin: 40px 20px;
+  font-weight: 600;
+  font-size: 1.2em;
+}
+
 .bookListContent {
   display: flex;
-  margin-top: 80px;
+
   width: 100%;
 
   .sideBarBox {
@@ -46,6 +52,40 @@
         height: 45px;
         margin-top: 27px;
         width: 100%;
+      }
+    }
+
+    .itemClickedWrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      width: 100%;
+
+      .clickBox {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .itemClicked {
+          background-color: $color-darkgrey;
+          padding: 8px 10px;
+          margin-top: 24px;
+          margin-right: 20px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 33px;
+          cursor: pointer;
+        }
+
+        .closeIcon {
+          position: absolute;
+          top: 19px;
+          right: 0;
+          font-size: 22px;
+        }
       }
     }
   }

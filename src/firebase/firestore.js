@@ -7,6 +7,8 @@ import {
   doc,
   updateDoc,
   deleteDoc,
+  query,
+  where,
 } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -22,7 +24,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-export const getBooks = async () => {
+export const getAllBooks = async () => {
   const booksRef = collection(db, "books");
   const booksSnapshot = await getDocs(booksRef);
   const booksList = booksSnapshot.docs.map((doc) => ({
@@ -32,19 +34,10 @@ export const getBooks = async () => {
   return booksList;
 };
 
-export const getBestsellerBooks = async () => {
-  const booksRef = collection(db, "bestseller");
-  const booksSnapshot = await getDocs(booksRef);
-  const booksList = booksSnapshot.docs.map((doc) => ({
-    id: doc.id,
-    ...doc.data(),
-  }));
-  return booksList;
-};
-
-export const getNewBooks = async () => {
-  const booksRef = collection(db, "newbooks");
-  const booksSnapshot = await getDocs(booksRef);
+export const getBooks = async (type) => {
+  const booksRef = collection(db, "books");
+  const q = query(booksRef, where("type", "==", type));
+  const booksSnapshot = await getDocs(q);
   const booksList = booksSnapshot.docs.map((doc) => ({
     id: doc.id,
     ...doc.data(),
@@ -72,16 +65,6 @@ export const deleteBook = async (bookId) => {
   await deleteDoc(bookRef);
 };
 
-export const getOrders = async () => {
-  const ordersRef = collection(db, "orders");
-  const ordersSnapshot = await getDocs(ordersRef);
-  const ordersList = ordersSnapshot.docs.map((doc) => ({
-    id: doc.id,
-    ...doc.data(),
-  }));
-  return ordersList;
-};
-
 export const searchBooks = async (searchTerm) => {
   const booksRef = collection(db, "books");
   const querySnapshot = await getDocs(booksRef);
@@ -92,6 +75,16 @@ export const searchBooks = async (searchTerm) => {
         book.title.includes(searchTerm) || book.author.includes(searchTerm)
     );
   return booksList;
+};
+
+export const getOrders = async () => {
+  const ordersRef = collection(db, "orders");
+  const ordersSnapshot = await getDocs(ordersRef);
+  const ordersList = ordersSnapshot.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
+  return ordersList;
 };
 
 export default db;
