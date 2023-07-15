@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 
 import LoginButton from "../../components/loginForm/loginButton/LoginButton";
+
+import eyeOff from "../../assets/icon_eye_off_fill.svg";
+import eyeOn from "../../assets/icon_eye_on_fill.svg";
 
 import "./LoginForm.scss";
 
@@ -12,10 +15,22 @@ const LoginForm = ({
   onLogin,
   error,
 }) => {
+  const [showPassword, setShowPassword] = useState({
+    password: false,
+    confirmPassword: false,
+  });
+
   const onKeyPress = (event) => {
     if (event.key === "Enter") {
       onLogin();
     }
+  };
+
+  const toggleEyeIcon = (field) => {
+    setShowPassword((prevState) => ({
+      ...prevState,
+      [field]: !prevState[field],
+    }));
   };
 
   return (
@@ -38,10 +53,16 @@ const LoginForm = ({
         id="userPassword"
         className="input"
         placeholder="비밀번호를 입력해주세요."
-        type="password"
+        type={showPassword.password ? "text" : "password"}
         value={password}
         onChange={onPasswordChange}
         onKeyPress={onKeyPress}
+      />
+      <img
+        alt="eye check"
+        className="inputPasswordImg"
+        src={showPassword.password ? eyeOn : eyeOff}
+        onClick={() => toggleEyeIcon("password")}
       />
       {error && <p className="errorMessage">{error}</p>}
       <LoginButton onLogin={onLogin} />

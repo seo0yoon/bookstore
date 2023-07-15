@@ -8,8 +8,6 @@ import {
 
 import AdminItem from "../../components/admin/AdminItem";
 
-import { AiOutlinePlus } from "react-icons/ai";
-
 import "./Admin.scss";
 
 const Admin = () => {
@@ -106,34 +104,51 @@ const Admin = () => {
     fetchBooks();
   };
 
+  const bookInputs = [
+    {
+      name: "bookTitle",
+      state: bookTitle,
+      setState: setBookTitle,
+      placeholder: "도서 제목",
+      type: "text",
+    },
+    {
+      name: "bookAuthor",
+      state: bookAuthor,
+      setState: setBookAuthor,
+      placeholder: "도서 저자",
+      type: "text",
+    },
+    {
+      name: "bookPrice",
+      state: bookPrice,
+      setState: setBookPrice,
+      placeholder: "가격",
+      type: "text",
+    },
+    {
+      name: "bookpublicationDate",
+      state: bookpublicationDate,
+      setState: setBookPublicationDate,
+      placeholder: "발행일",
+      type: "date",
+    },
+  ];
+
   return (
     <div className="adminBookListContainer">
       <div className="bookListInputBox">
         <div className="bookForm">
-          <input
-            type="text"
-            value={bookTitle}
-            onChange={(e) => setBookTitle(e.target.value)}
-            placeholder="도서 제목"
-          />
-          <input
-            type="text"
-            value={bookAuthor}
-            onChange={(e) => setBookAuthor(e.target.value)}
-            placeholder="도서 저자"
-          />
-          <input
-            type="text"
-            value={bookPrice}
-            onChange={(e) => setBookPrice(e.target.value)}
-            placeholder="가격"
-          />
-          <input
-            type="date"
-            value={bookpublicationDate}
-            onChange={(e) => setBookPublicationDate(e.target.value)}
-            placeholder="발행일"
-          />
+          {bookInputs.map((input) => (
+            <input
+              key={input.name}
+              className="bookInput"
+              value={input.state}
+              onChange={(e) => input.setState(e.target.value)}
+              placeholder={input.placeholder}
+              type={input.type}
+            />
+          ))}
         </div>
         <div className="btnBox">
           <button

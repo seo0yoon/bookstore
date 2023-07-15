@@ -65,8 +65,8 @@ const CartList = ({ item, toggleItemChecked }) => {
       <div className="listBottom">
         <select className="selectCoupon">
           <option value="option1">회원가입 축하 10% 쿠폰</option>
-          <option value="option2">회원가입 축하 10% 쿠폰</option>
-          <option value="option3">회원가입 축하 10% 쿠폰</option>
+          <option value="option2">회원가입 축하 20% 쿠폰</option>
+          <option value="option3">회원가입 축하 30% 쿠폰</option>
         </select>
       </div>
     </li>

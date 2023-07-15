@@ -66,34 +66,30 @@ const BookList = () => {
     <div className="bookListContainer">
       <div className="bookListContent">
         <div className="sideBarBox">
-          <div className="sideBarFilter">
-            <div className="varietys">
-              <div className="itemTitle">필터</div>
-              <div className="itemWrap">
-                <div className="item">검색결과</div>
-                <AiOutlinePlus />
-              </div>
-              <div className="itemWrap">
-                <div className="item">국내도서</div>
-                <AiOutlinePlus />
-              </div>
-              <div className="itemWrap">
-                <div className="item">외국도서</div>
-                <AiOutlinePlus />
-              </div>
-              <div className="itemWrap">
-                <div className="item">무료배송</div>
-                <AiOutlinePlus />
-              </div>
-              <div className="itemWrap">
-                <div className="item">비비문고 배송</div>
-                <AiOutlinePlus />
-              </div>
-              <div className="itemWrap">
-                <div className="item">가격</div>
-                <AiOutlinePlus />
-              </div>
-            </div>
+          <div className="itemTitle">필터</div>
+          <div className="itemWrap">
+            <div className="item">검색결과</div>
+            <AiOutlinePlus />
+          </div>
+          <div className="itemWrap">
+            <div className="item">국내도서</div>
+            <AiOutlinePlus />
+          </div>
+          <div className="itemWrap">
+            <div className="item">외국도서</div>
+            <AiOutlinePlus />
+          </div>
+          <div className="itemWrap">
+            <div className="item">무료배송</div>
+            <AiOutlinePlus />
+          </div>
+          <div className="itemWrap">
+            <div className="item">비비문고 배송</div>
+            <AiOutlinePlus />
+          </div>
+          <div className="itemWrap">
+            <div className="item">가격</div>
+            <AiOutlinePlus />
           </div>
         </div>
         <div className="bookListSectin">

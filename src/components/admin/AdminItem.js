@@ -5,6 +5,8 @@ import { AiOutlineClose } from "react-icons/ai";
 import "./AdminItem.scss";
 
 const AdminItem = ({ book, handleBookDelete, handleBookClick }) => {
+  const formattedPrice = parseInt(book.price).toLocaleString();
+
   return (
     <article className="adminItem" onClick={() => handleBookClick(book)}>
       <div className="itemContents">
@@ -23,8 +25,7 @@ const AdminItem = ({ book, handleBookDelete, handleBookClick }) => {
           </div>
           <h3 className="bottomTitle">{book.title}</h3>
           <div className="bottomPrice">
-            <span className="prePrice">{book.price.toLocaleString()}원</span>
-            <span className="salePrice">{book.price.toLocaleString()}원</span>
+            <span className="prePrice">{formattedPrice}원</span>
           </div>
         </section>
         <section className="bottomDetail">

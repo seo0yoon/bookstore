@@ -26,6 +26,9 @@ const BestsellerListItem = ({ book }) => {
     addToCart(book);
   };
 
+  const formattedPrice = parseInt(book.price).toLocaleString();
+  const salePrice = (parseInt(book.price) * 0.9).toLocaleString();
+
   return (
     <article className="bestsellerListItem">
       <section
@@ -58,8 +61,8 @@ const BestsellerListItem = ({ book }) => {
         <section className="bottomContext">
           <h3 className="bottomTitle">{book.title}</h3>
           <div className="bottomPrice">
-            <span className="prePrice">{book.price}</span>
-            <span className="salePrice">{book.price}</span>
+            <span className="prePrice">{formattedPrice}원</span>
+            <span className="salePrice">{salePrice}원</span>
           </div>
         </section>
         <section className="bottomDetail">

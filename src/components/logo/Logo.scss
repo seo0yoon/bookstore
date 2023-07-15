@@ -1,19 +1,20 @@
 @import "../../../src/styles/global.scss";
 
-.logo-text {
+.logoText {
   @include flexCenter;
-  font-family: "Akaya Telivigala", cursive;
-  font-size: $font-xxl;
-  font-weight: 700;
-  color: $color-text;
   transition: all 0.2s ease;
-  width: 68px;
 
   &:hover {
     transform: scale(1.1);
   }
 
-  @media (max-width: 64em) {
-    font-size: $font-xl;
+  .logoImg {
+    width: 54px;
+    height: 64px;
+
+    @media (max-width: 34em) {
+      width: 40px;
+      height: 50px;
+    }
   }
 }

@@ -5,10 +5,11 @@
   width: 25%;
 
   .itemContents {
+    position: relative;
     width: 250px;
     margin-bottom: 14px;
     border: 1px solid #f1f1f1;
-    box-shadow: 0 0 10px 0 rgb(0 0 0 / 8%);
+    box-shadow: 0 0 10px 0 rgb(0 0 0 / 5%);
 
     .content {
       @include flexCenter;
@@ -59,22 +60,35 @@
         height: 135px;
         padding: 26px 12px 23px 0;
         background-color: #fff;
-        transition: bottom 0.7s ease;
+        transition: bottom 0.8s ease;
 
         .lists {
           @include flexColumn;
+          width: 100%;
           align-items: inherit;
           color: grey;
           gap: 20px;
 
           .list {
             display: flex;
+            align-items: center;
+            justify-content: flex-end;
             gap: 8px;
             line-height: 1;
-            cursor: pointer;
 
             .context {
               align-items: center;
+            }
+
+            .icon {
+              width: 22px;
+              height: 22px;
+            }
+
+            &:not(:last-child):hover {
+              color: #fc3c3c;
+              opacity: 0.8;
+              transition: color 0.6s ease;
             }
           }
         }
@@ -94,10 +108,11 @@
       margin-top: 26px;
 
       .bottomTitle {
-        max-height: 2.3em;
+        height: 2.3em;
         font-size: 20px;
-        line-height: 1.15;
         overflow-wrap: break-word;
+        line-height: 1.15;
+        overflow: auto;
       }
 
       .bottomPrice {
@@ -125,8 +140,11 @@
     }
 
     .bottomDetail {
+      height: 2.3em;
       margin-top: 22px;
       color: grey;
+      overflow: auto;
+      line-height: 1.15;
 
       .bottomAuthor {
         margin-right: 8px;
@@ -139,5 +157,17 @@
         line-height: 1.43;
       }
     }
+
+    &:hover {
+      box-shadow: 0 0 10px 0 rgb(0 0 0 / 14%);
+    }
+  }
+
+  @media (max-width: 58em) {
+    width: 50%;
+  }
+
+  @media (max-width: 38em) {
+    width: 100%;
   }
 }

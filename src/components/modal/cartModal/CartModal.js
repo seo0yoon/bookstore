@@ -18,10 +18,12 @@ const CartModal = ({ message }) => {
 
   return (
     <section className="cartModal">
-      <button className="checkOutBtn" onClick={() => setShowModal(true)}>
-        장바구니
-      </button>
-      <BsCart2 className="cartIcon" />
+      <div className="checkOutBtnWrap">
+        <button className="checkOutBtn" onClick={() => setShowModal(true)}>
+          장바구니
+        </button>
+        <BsCart2 className="cartIcon" />
+      </div>
       {showModal && (
         <div className="modalOverlay" onClick={handleClose}>
           <div className="modalContent" onClick={(e) => e.stopPropagation()}>

@@ -6,6 +6,7 @@ import { CartContext } from "../../contexts/CartContext";
 
 import SearchBar from "../main/searchBar/SearchBar";
 import Logo from "../logo/Logo";
+import SubMenu from "./subMenu/SubMenu";
 
 import { BiSolidUser } from "react-icons/bi";
 import { BsBagCheck } from "react-icons/bs";
@@ -79,26 +80,7 @@ const Header = () => {
           )}
         </div>
       </nav>
-
-      <nav className="headerMenu">
-        <ul>
-          <li className="menuItem">
-            <Link to={{ pathname: "/booklist", search: "?tab=all" }}>
-              전체보기
-            </Link>
-          </li>
-          <li className="menuItem">
-            <Link to={{ pathname: "/booklist", search: "?tab=bestseller" }}>
-              베스트셀러
-            </Link>
-          </li>
-          <li className="menuItem">
-            <Link to={{ pathname: "/booklist", search: "?tab=newbooks" }}>
-              신상품
-            </Link>
-          </li>
-        </ul>
-      </nav>
+      <SubMenu />
     </header>
   );
 };

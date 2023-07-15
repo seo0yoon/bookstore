@@ -2,9 +2,9 @@ import React from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
-import image1 from "../../../assets/bg-shape.png";
-import image2 from "../../../assets/home-one-img1.jpg";
-import image3 from "../../../assets/home-one-img2.jpg";
+import image1 from "../../../assets/1.jpg";
+import image2 from "../../../assets/2.jpg";
+import image3 from "../../../assets/3.jpg";
 
 import "./CoverGif.scss";
 

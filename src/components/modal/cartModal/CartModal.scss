@@ -4,12 +4,31 @@
   @include flexCenter;
   cursor: pointer;
 
-  .checkOutBtn {
-    cursor: pointer;
-  }
+  .checkOutBtnWrap {
+    @include flexCenter;
 
-  .cartIcon {
-    margin-left: 10px;
+    .checkOutBtn {
+      color: rgb(140, 140, 140);
+      font-size: 1.05em;
+      line-height: 1;
+      cursor: pointer;
+
+      &:hover {
+        color: #fc3c3c;
+        transition: color 0.3s ease;
+      }
+    }
+
+    .cartIcon {
+      width: 22px;
+      height: 22px;
+      margin-left: 3px;
+    }
+
+    &:hover {
+      color: #fc3c3c;
+      transition: color 0.3s ease;
+    }
   }
 
   .modalOverlay {
@@ -20,7 +39,7 @@
     right: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.5);
-    z-index: 10;
+    z-index: 20;
   }
 
   .modalContent {
