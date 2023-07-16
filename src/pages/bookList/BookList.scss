@@ -18,7 +18,6 @@
 
 .bookListContent {
   display: flex;
-
   width: 100%;
 
   .sideBarBox {
@@ -32,7 +31,7 @@
       align-items: center;
       width: 100%;
       height: 3.5rem;
-      background-color: rgb(40, 40, 40);
+      background-color: $color-darkgrey;
       padding: 0 1rem;
       font-size: $font-md;
       color: #fff;
@@ -58,7 +57,7 @@
       }
 
       &:hover {
-        background-color: #e6e6e6;
+        background-color: $color-grey;
         transition: 0.5s;
       }
     }
@@ -77,7 +76,7 @@
         align-items: center;
 
         .itemClicked {
-          background-color: $color-darkgrey;
+          background-color: $color-grey;
           padding: 8px 10px;
           margin-top: 24px;
           margin-right: 20px;
@@ -100,5 +99,9 @@
 
   .bookListSectin {
     width: calc(100% - 28%);
+
+    .items {
+      @include flexCenter;
+    }
   }
 }

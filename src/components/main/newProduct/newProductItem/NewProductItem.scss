@@ -97,12 +97,14 @@
       .bottomContext {
         position: relative;
         margin-top: 26px;
+        padding: 0 8px;
 
         .bottomTitle {
-          max-height: 2.3em;
+          height: 2.3em;
           font-size: 20px;
-          line-height: 1.15;
           overflow-wrap: break-word;
+          line-height: 1.15;
+          overflow: auto;
         }
 
         .bottomPrice {
@@ -131,6 +133,7 @@
 
       .bottomDetail {
         margin-top: 22px;
+        padding: 0 8px;
         color: grey;
 
         .bottomAuthor {

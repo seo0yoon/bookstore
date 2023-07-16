@@ -52,7 +52,7 @@
 
         &.MDselection.show {
           top: 30px;
-          background-color: $color-primary;
+          background-color: $color-green;
         }
 
         &.MDselection.top.show {
@@ -116,6 +116,7 @@
     .bottomContext {
       position: relative;
       margin-top: 26px;
+      padding: 0 8px;
 
       .bottomTitle {
         height: 2.3em;
@@ -152,6 +153,7 @@
     .bottomDetail {
       height: 2.3em;
       margin-top: 22px;
+      padding: 0 8px;
       color: grey;
       overflow: auto;
       line-height: 1.15;

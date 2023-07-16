@@ -213,7 +213,7 @@ const BookList = () => {
                 <NewBookListItem key={book.id} book={book} />
               ))}
             {activeTab === "검색결과" && books.length === 0 && (
-              <div>검색된 결과가 없습니다.</div>
+              <div className="emptyItem">검색된 결과가 없습니다.</div>
             )}
             {activeTab === "검색결과" &&
               books.map((book) => (

@@ -49,10 +49,12 @@ const Footer = () => {
           </div>
         </div>
         <ul className="footerMenuItems">
-          <li className="footerItem">책 구매</li>
-          <li className="footerItem">베스트셀러</li>
-          <li className="footerItem">신상품</li>
-          <li className="footerItem">인기도서</li>
+          <li className="footerItem">회사소개</li>
+          <li className="footerItem">이용약관</li>
+          <li className="footerItem">개인정보처리방침</li>
+          <li className="footerItem">청소년보호정책</li>
+          <li className="footerItem">대량주문안내</li>
+          <li className="footerItem">광고소개</li>
         </ul>
       </section>
       <div className="buttom">

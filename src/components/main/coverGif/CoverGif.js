@@ -19,13 +19,13 @@ const CoverGif = () => {
         interval={3000}
       >
         <div>
-          <img src={image1} alt="main" />
+          <img className="coverImg" src={image1} alt="main" />
         </div>
         <div>
-          <img src={image2} alt="main" />
+          <img className="coverImg" src={image2} alt="main" />
         </div>
         <div>
-          <img src={image3} alt="main" />
+          <img className="coverImg" src={image3} alt="main" />
         </div>
       </Carousel>
     </div>

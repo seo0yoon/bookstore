@@ -6,7 +6,7 @@ import "./MainOffers.scss";
 
 const MainOffers = () => {
   return (
-    <main className="mainSection">
+    <main className="mainOffers">
       <section className="mainContainer">
         <figure className="box">
           <img className="mainImage" src={mainImg} alt="mainbook" />

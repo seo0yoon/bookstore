@@ -19,15 +19,14 @@ const NewProduct = ({ newBooks }) => {
         <Swiper
           className="swiper desktop"
           spaceBetween={10}
-          slidesPerView={3}
+          slidesPerView={5}
+          centeredSlides={true}
           navigation={{
             nextEl: ".swiper-button-next",
             prevEl: ".swiper-button-prev",
           }}
           pagination={{ clickable: true }}
-          onSwiper={(swiper) => console.log(swiper)}
-          onSlideChange={() => console.log("slide change")}
-          autoplay={{ delay: 2000 }}
+          loop={true}
         >
           {newBooks?.map((book) => (
             <SwiperSlide className="swiper-slide" key={book.id}>

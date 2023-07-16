@@ -3,12 +3,12 @@
 .newProduct {
   position: relative;
   width: 100%;
-  height: calc(100vh - $nav-height);
+  height: calc(110vh - $nav-height);
   background-color: $color-background;
 
   .newProductTitle {
     @include flexCenter;
-    margin: 40px 0 120px;
+    margin: 100px 0 120px;
 
     h2 {
       font-size: $font-xxl;
@@ -39,8 +39,27 @@
 
     .swiper-wrapper {
       display: flex;
-      height: 480px;
     }
+
+    // .swiper-slide {
+    //   @include flexCenter;
+    //   flex-direction: column;
+    //   transition: transform 0.5s ease-out;
+    // }
+
+    // .swiper-slide-active {
+    //   transition: transform 0.5s ease-out;
+    // }
+
+    // .swiper-slide-next {
+    //   transform: scale(1.2);
+    //   width: 100%;
+    //   height: 500px;
+    // }
+
+    // .swiper-slide-prev {
+    //   transition: transform 0.5s ease-out;
+    // }
 
     .swiper-slide {
       @include flexCenter;
@@ -49,12 +68,13 @@
     }
 
     .swiper-slide-active {
-      transition: transform 0.5s ease-out;
+      transform: scale(1.2);
+      width: 100%;
+      height: 500px;
     }
 
     .swiper-slide-next {
-      transform: scale(1.2);
-      width: 100%;
+      transition: transform 0.5s ease-out;
     }
 
     .swiper-slide-prev {
@@ -71,26 +91,26 @@
     }
 
     .swiper-button-next {
-      right: 50px;
+      right: 20px;
       font-size: 26px;
     }
 
     .swiper-button-prev {
-      left: 50px;
+      left: 20px;
       font-size: 26px;
     }
 
     .swiperSlideBox {
       @include flexCenter;
       flex-direction: column;
-      width: 300px;
-      height: 100%;
+      width: 230px;
+      height: 380px;
       border: 1px solid #f1f1f1;
       box-shadow: 0 0 10px 0 rgb(0 0 0 / 8%);
 
       .swiperSlideImg {
-        width: 197px;
-        height: 280px;
+        width: 180px;
+        height: 270px;
         object-fit: cover;
       }
 
@@ -119,13 +139,16 @@
         height: 400px;
       }
 
-      .swiperSlideBox {
-        width: 250px;
-        height: 100%;
+      .swiper-slide-next {
+        transform: none;
+        width: 100%;
+        height: 400px;
+      }
 
+      .swiperSlideBox {
         .swiperSlideImg {
           width: 150px;
-          height: 220px;
+          height: 245px;
         }
 
         .swiperSlideTitle {
