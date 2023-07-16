@@ -1,25 +1,28 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useLocation } from "react-router-dom";
 
 import { getBooks, searchBooks } from "../../firebase/firestore";
+import { FilterContext } from "../../contexts/FilterContext";
 
 import BookListItem from "../../components/bookList/BookListItem";
 import BestsellerListItem from "../../components/bestsellerList/BestsellerListItem";
 import NewBookListItem from "../../components/newBookList/NewBookListItem";
 import SearchBookListItem from "../../components/searchBookList/SearchBookListItem";
 
-import { AiOutlinePlus, AiFillCloseCircle } from "react-icons/ai";
+import { AiOutlinePlus } from "react-icons/ai";
 
 import "./BookList.scss";
 
 const BookList = () => {
   const location = useLocation();
+  const { originFilter, setOriginFilter, deliveryFilter, setDeliveryFilter } =
+    useContext(FilterContext);
 
-  const [allBooks, setAllBooks] = useState([]); // 모든 도서를 저장
-  const [books, setBooks] = useState([]); // 필터링된 도서를 저장
+  const [allBooks, setAllBooks] = useState([]);
+  const [filteredByOriginBooks, setFilteredByOriginBooks] = useState([]);
+  const [books, setBooks] = useState([]);
   const [activeTab, setActiveTab] = useState("전체보기");
   const [activeTitle, setActiveTitle] = useState("전체보기");
-  const [originFilter, setOriginFilter] = useState("");
 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
@@ -28,30 +31,44 @@ const BookList = () => {
 
     if (tab === "bestseller") {
       fetchBooks("bestseller");
-      setActiveTab("베스트셀러");
       setActiveTitle("베스트셀러");
+      setActiveTab("베스트셀러");
     } else if (tab === "new") {
       fetchBooks("new");
-      setActiveTab("신상품");
       setActiveTitle("신상품");
+      setActiveTab("신상품");
     } else if (tab === "search") {
       fetchSearchBooks(query);
       setActiveTab("검색결과");
     } else {
       fetchBooks(undefined);
-      setActiveTab("전체보기");
       setActiveTitle("전체보기");
+      setActiveTab("전체보기");
     }
   }, [location.search]);
 
   useEffect(() => {
-    // originFilter가 변경될 때마다 도서를 필터링
+    let filteredBooks = allBooks;
+
     if (originFilter === "국내도서" || originFilter === "외국도서") {
-      setBooks(allBooks.filter((book) => book.origin === originFilter));
-    } else {
-      setBooks(allBooks);
+      filteredBooks = filteredBooks.filter(
+        (book) => book.origin === originFilter
+      );
     }
+
+    setFilteredByOriginBooks(filteredBooks);
   }, [originFilter, allBooks]);
+
+  useEffect(() => {
+    if (deliveryFilter) {
+      const filteredBooks = filteredByOriginBooks.filter(
+        (book) => book.freeDelivery
+      );
+      setBooks(filteredBooks);
+    } else {
+      setBooks(filteredByOriginBooks);
+    }
+  }, [deliveryFilter, filteredByOriginBooks]);
 
   const fetchBooks = async (type) => {
     const booksData = await getBooks(type);
@@ -62,6 +79,18 @@ const BookList = () => {
     const searchedBooksData = await searchBooks(query);
     setBooks(searchedBooksData);
   };
+
+  const setFilterAndResetOthers = (filterType, value) => {
+    if (filterType === "origin") {
+      setOriginFilter(value);
+      setDeliveryFilter(false);
+    } else if (filterType === "freeDelivery") {
+      setDeliveryFilter(value);
+      setOriginFilter("");
+    }
+  };
+
+  console.log("books", books);
 
   return (
     <div className="bookListContainer">
@@ -76,8 +105,7 @@ const BookList = () => {
             <div
               className="item"
               onClick={() => {
-                console.log("구갠");
-                setOriginFilter("국내도서");
+                setFilterAndResetOthers("origin", "국내도서");
               }}
             >
               국내도서
@@ -88,8 +116,7 @@ const BookList = () => {
             <div
               className="item"
               onClick={() => {
-                console.log("외갠");
-                setOriginFilter("외국도서");
+                setFilterAndResetOthers("origin", "외국도서");
               }}
             >
               외국도서
@@ -97,11 +124,18 @@ const BookList = () => {
             <AiOutlinePlus />
           </div>
           <div className="itemWrap">
-            <div className="item">무료배송</div>
+            <div
+              className="item"
+              onClick={() => {
+                setFilterAndResetOthers("freeDelivery", true);
+              }}
+            >
+              무료배송
+            </div>
             <AiOutlinePlus />
           </div>
           <div className="itemWrap">
-            <div className="item">비비문고 배송</div>
+            <div className="item">MD의 선택</div>
             <AiOutlinePlus />
           </div>
           <div className="itemWrap">
