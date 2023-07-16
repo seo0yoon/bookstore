@@ -24,27 +24,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// export const getAllBooks = async () => {
-//   const booksRef = collection(db, "books");
-//   const booksSnapshot = await getDocs(booksRef);
-//   const booksList = booksSnapshot.docs.map((doc) => ({
-//     id: doc.id,
-//     ...doc.data(),
-//   }));
-//   return booksList;
-// };
-
-// export const getBooks = async (type) => {
-//   const booksRef = collection(db, "books");
-//   const q = query(booksRef, where("type", "==", type));
-//   const booksSnapshot = await getDocs(q);
-//   const booksList = booksSnapshot.docs.map((doc) => ({
-//     id: doc.id,
-//     ...doc.data(),
-//   }));
-//   return booksList;
-// };
-
 export const getBooks = async (type) => {
   const booksRef = collection(db, "books");
   let q;

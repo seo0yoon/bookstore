@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { saveOrderToFirebase } from "../../utils/order";
 import { CartContext } from "../../contexts/CartContext";
 import { getAuth } from "firebase/auth";
@@ -6,18 +7,22 @@ import { getAuth } from "firebase/auth";
 import CartList from "../../components/cart/CartList";
 import OrderModal from "../../components/modal/orderModal/OrderModal";
 
-import { AiOutlineCheckCircle, AiFillCheckCircle } from "react-icons/ai";
+import {
+  AiOutlineCheckCircle,
+  AiFillCheckCircle,
+  AiFillInfoCircle,
+} from "react-icons/ai";
 
 import "./Cart.scss";
 
 const Cart = () => {
   const {
     cart,
-    clearCart,
     checked,
     toggleAllChecked,
     toggleItemChecked,
     productTotal,
+    clearSelectedItems,
   } = useContext(CartContext);
 
   const [deliveryCharge, setDeliveryCharge] = useState(3000);
@@ -44,14 +49,29 @@ const Cart = () => {
     setTotalPrice(productTotal + deliveryCharge);
   }, [productTotal, deliveryCharge]);
 
-  const handleCheck = () => {
-    toggleAllChecked();
-  };
+  useEffect(() => {
+    const auth = getAuth();
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        setUserId(user.uid);
+      } else {
+        setUserId(null);
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
 
   const completeOrder = async () => {
-    const result = await saveOrderToFirebase(cart, userId);
+    const selectedItems = cart.filter((item) => item.selected);
+
+    if (selectedItems.length === 0) {
+      return false;
+    }
+
+    const result = await saveOrderToFirebase(selectedItems, userId);
     if (result) {
-      clearCart();
+      clearSelectedItems();
       return true;
     }
     return false;
@@ -61,7 +81,7 @@ const Cart = () => {
     <div className="cart">
       <div className="wrapper">
         <div className="productAll">
-          <div className="product" onClick={handleCheck}>
+          <div className="product" onClick={toggleAllChecked}>
             {checked ? (
               <AiFillCheckCircle className="checkIcon" />
             ) : (
@@ -91,23 +111,38 @@ const Cart = () => {
             />
           ))}
         </ul>
-        <div className="priceBlock">
-          <div className="blockTitle">총 결제금액</div>
-          <div className="productPrice">
-            <div className="priceContext">상품금액</div>
-            <div className="price">{productTotal.toLocaleString()}원</div>
+        {cart.length > 0 ? (
+          <div className="priceWrap">
+            <div className="blockTitle">총 결제금액</div>
+            <div className="productPrice">
+              <div className="priceContext">상품금액</div>
+              <div className="price">{productTotal.toLocaleString()}원</div>
+            </div>
+            <div className="deliveryCharge">
+              <div className="priceContext">배송비</div>
+              <div className="price">{`+ ${deliveryCharge.toLocaleString()}원`}</div>
+            </div>
+            <div className="totalPrice">
+              <div className="priceContext">결제예정금액</div>
+              <div className="price">{totalPrice.toLocaleString()}원</div>
+            </div>
           </div>
-          <div className="deliveryCharge">
-            <div className="priceContext">배송비</div>
-            <div className="price">{`+ ${deliveryCharge.toLocaleString()}원`}</div>
+        ) : (
+          <div className="emptyCart">
+            <AiFillInfoCircle className="infoIcon" />
+            <span>장바구니에 담긴 상품이 없습니다.</span>
+            {userId === null ? (
+              <Link to={"/login"}>
+                <button className="loginBtn">로그인</button>
+              </Link>
+            ) : null}
           </div>
-          <div className="totalPrice">
-            <div className="priceContext">결제예정금액</div>
-            <div className="price">{totalPrice.toLocaleString()}원</div>
-          </div>
-        </div>
+        )}
       </div>
-      <OrderModal saveOrder={completeOrder} />
+      <OrderModal
+        saveOrder={completeOrder}
+        disabledButton={cart.length > 0 ? false : true}
+      />
     </div>
   );
 };

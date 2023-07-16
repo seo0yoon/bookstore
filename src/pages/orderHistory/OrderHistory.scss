@@ -1,48 +1,41 @@
 @import "../../styles/global.scss";
 
 .orderHistory {
-  min-height: calc(100vh - $nav-height);
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
+  @include flexCenter;
   flex-direction: column;
-  background-color: #fff;
+  position: relative;
+  width: 100%;
+  background-color: $color-background;
 
   .wrapper {
+    display: flex;
     flex-direction: column;
     width: 90%;
     margin: 0 auto;
-    display: flex;
 
     .orderProcess {
       display: flex;
       align-items: center;
-      margin: 50px 0 20px;
-      display: flex;
-      align-items: center;
       justify-content: flex-end;
+      margin: 50px 0 20px;
 
       .stepOne,
       .stepTwo {
         display: flex;
         align-items: center;
-        font-size: 15px;
+        font-size: $font-sm;
         margin-right: 10px;
         color: #969696;
         font-weight: 400;
 
         .step {
+          @include flexCenter;
           background-color: #d0d0d0;
-          color: #fff;
-          border-radius: 50%;
           width: 20px;
           height: 20px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
           margin-right: 5px;
+          border-radius: 50%;
+          color: $color-background;
         }
       }
 
@@ -51,33 +44,33 @@
         font-weight: 700;
 
         .step {
-          background-color: #4dac27;
-          color: #fff;
-          border-radius: 50%;
+          @include flexCenter;
+          background-color: $color-green;
           width: 20px;
           height: 20px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
           margin-right: 5px;
+          border-radius: 50%;
+          color: #fff;
         }
       }
     }
 
     .orderContainer {
+      margin: 20px 0 50px;
+      border: 1px solid #e5e5e5;
+
       .orderHeader {
         display: flex;
         align-items: center;
         padding: 16px 20px;
-        background-color: #f7f7f7;
-        box-sizing: border-box;
+        background-color: $color-grey;
 
         .headerDate {
-          font-size: 16px;
+          margin-right: 10px;
+          font-size: $font-md;
           line-height: 26px;
           letter-spacing: -0.01em;
           font-weight: 700;
-          margin-right: 10px;
         }
 
         .headerNumber {
@@ -92,10 +85,10 @@
       .order {
         display: flex;
         align-items: center;
-        padding: 20px 0;
+        padding: 20px;
 
         .orderTitle {
-          font-size: 16px;
+          font-size: $font-md;
           font-weight: 700;
         }
       }
@@ -103,57 +96,68 @@
       .deliveryInfo {
         display: flex;
         align-items: center;
-        border-radius: 10px;
         padding: 13px 16px;
         margin-bottom: 16px;
         background-color: rgba(80, 85, 177, 0.06);
 
         .deliveryTitle {
-          font-size: 13px;
+          margin-right: 10px;
+          color: $color-blue;
+          font-size: 14px;
+          font-weight: 700;
           line-height: 19px;
           letter-spacing: -0.01em;
-          font-weight: 700;
-          color: #5055b1;
-          margin-right: 10px;
         }
 
         .deliveryDate {
-          font-size: 13px;
+          margin-right: 10px;
+          font-size: 14px;
+          font-weight: 700;
           line-height: 19px;
           letter-spacing: -0.01em;
-          font-weight: 700;
-          margin-right: 10px;
         }
 
         .deliveryStatus {
-          font-size: 13px;
+          font-size: 14px;
           line-height: 19px;
           letter-spacing: -0.01em;
         }
       }
 
       .delivery {
-        padding: 20px 0;
+        padding: 20px;
         border-bottom: 1px solid #e5e5e5;
 
         .deliveryTitle {
+          margin-right: 10px;
           font-size: 14px;
           font-weight: 500;
-          margin-right: 10px;
         }
       }
 
       .deliveryPrice {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 20px 0;
-        border-bottom: 1px solid #e5e5e5;
+        @include flexBetween;
+        padding: 20px;
 
         .price {
           font-weight: 700;
           margin-right: 10px;
         }
+      }
+    }
+
+    .emptyOrderContainer {
+      @include flexCenter;
+      flex-direction: column;
+      padding: 60px 0;
+      border-top: 1px solid #d5d5d5;
+      border-bottom: 1px solid #eaeaea;
+      color: #767676;
+
+      .infoIcon {
+        margin-bottom: 10px;
+        color: $color-lightgrey;
+        font-size: 36px;
       }
     }
   }

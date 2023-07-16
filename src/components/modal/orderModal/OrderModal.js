@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import "./OrderModal.scss";
 
-const OrderModal = ({ saveOrder }) => {
+const OrderModal = ({ saveOrder, disabledButton }) => {
   const [showModal, setShowModal] = useState(false);
 
   const handleOrder = async () => {
@@ -15,7 +15,11 @@ const OrderModal = ({ saveOrder }) => {
 
   return (
     <section className="orderModal">
-      <button className="checkOutBtn" onClick={handleOrder}>
+      <button
+        className="checkOutBtn"
+        onClick={handleOrder}
+        disabled={disabledButton}
+      >
         주문하기
       </button>
       {showModal && (

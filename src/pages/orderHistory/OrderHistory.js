@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import { getOrders } from "../../firebase/firestore";
 import OrderItem from "../../components/order/OrderItem";
 
+import { AiFillInfoCircle } from "react-icons/ai";
+
 import "./OrderHistory.scss";
 
 const OrderHistory = () => {
@@ -77,18 +79,9 @@ const OrderHistory = () => {
             </div>
           ))
         ) : (
-          <div className="orderContainer">
-            <div className="orderHeader">주문내역이 없습니다.</div>
-            <div className="order">
-              <div className="orderTitle">배송</div>
-            </div>
-            <ul className="orderItems"></ul>
-            <div className="order">
-              <div className="orderTitle">배송정보</div>
-            </div>
-            <div className="deliveryPrice">
-              <div className="price">주문금액</div>
-            </div>
+          <div className="emptyOrderContainer">
+            <AiFillInfoCircle className="infoIcon" />
+            <div className="emptyOrderHistory">주문내역이 없습니다.</div>
           </div>
         )}
       </div>

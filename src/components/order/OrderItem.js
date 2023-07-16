@@ -3,6 +3,8 @@ import React from "react";
 import "./OrderItem.scss";
 
 const OrderItem = ({ item }) => {
+  const formattedPrice = parseInt(item.price).toLocaleString();
+
   return (
     <li className="orderItem" key={item.id}>
       <div className="productBox">
@@ -15,7 +17,7 @@ const OrderItem = ({ item }) => {
             <span>{item.quantity}</span>
           </div>
           <div className="productPrice">
-            <span>{item.price}원</span>
+            <span>{formattedPrice}원</span>
           </div>
         </div>
       </div>

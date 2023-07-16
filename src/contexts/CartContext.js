@@ -62,11 +62,6 @@ export const CartProvider = ({ children }) => {
     );
   };
 
-  const clearCart = () => {
-    setCart([]);
-    localStorage.setItem("cart", "[]");
-  };
-
   const updateCart = (updatedCart) => {
     setCart(updatedCart);
   };
@@ -88,6 +83,12 @@ export const CartProvider = ({ children }) => {
     setCart(updatedCart);
   };
 
+  const clearSelectedItems = () => {
+    const newCart = cart.filter((item) => !item.selected);
+    setCart(newCart);
+    localStorage.setItem("cart", JSON.stringify(newCart));
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -101,7 +102,7 @@ export const CartProvider = ({ children }) => {
         toggleAllChecked,
         toggleItemChecked,
         productTotal,
-        clearCart,
+        clearSelectedItems,
       }}
     >
       {children}

@@ -1,14 +1,12 @@
 @import "../../styles/global.scss";
 
 .cart {
-  min-height: calc(100vh - $nav-height);
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
+  @include flexCenter;
   flex-direction: column;
-  background-color: #fff;
+  position: relative;
+  min-height: calc(66vh - $nav-height);
+  width: 100%;
+  background-color: $color-background;
 
   .wrapper {
     flex-direction: column;
@@ -17,10 +15,8 @@
     display: flex;
 
     .productAll {
+      @include flexBetween;
       margin: 50px 0 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
 
       .product {
         display: flex;
@@ -42,21 +38,19 @@
         .stepThree {
           display: flex;
           align-items: center;
-          font-size: 15px;
           margin-right: 10px;
           color: #969696;
+          font-size: $font-sm;
           font-weight: 400;
 
           .step {
-            background-color: #d0d0d0;
-            color: #fff;
-            border-radius: 50%;
+            @include flexCenter;
             width: 20px;
             height: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             margin-right: 5px;
+            border-radius: 50%;
+            background-color: $color-lightgrey;
+            color: $color-background;
           }
         }
 
@@ -65,21 +59,19 @@
           font-weight: 700;
 
           .step {
-            background-color: #4dac27;
-            color: #fff;
-            border-radius: 50%;
+            @include flexCenter;
             width: 20px;
             height: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             margin-right: 5px;
+            border-radius: 50%;
+            background-color: $color-green;
+            color: #fff;
           }
         }
       }
     }
 
-    .priceBlock {
+    .priceWrap {
       .blockTitle {
         padding: 20px 0;
         font-weight: 700;
@@ -91,24 +83,12 @@
         justify-content: space-between;
         border-top: 1px solid #2e2e2e;
         padding: 20px 0;
-
-        .priceContext {
-        }
-
-        .price {
-        }
       }
 
       .deliveryCharge {
         display: flex;
         justify-content: space-between;
         padding: 20px 0;
-
-        .priceContext {
-        }
-
-        .price {
-        }
       }
 
       .totalPrice {
@@ -118,7 +98,7 @@
         padding: 20px 0;
 
         .priceContext {
-          color: #4dac27;
+          color: $color-green;
           font-weight: 700;
         }
 
@@ -126,6 +106,32 @@
           font-size: 24px;
           font-weight: 700;
         }
+      }
+    }
+
+    .emptyCart {
+      @include flexCenter;
+      flex-direction: column;
+      padding: 60px 0;
+      border-top: 1px solid #d5d5d5;
+      border-bottom: 1px solid #eaeaea;
+      color: #767676;
+
+      .infoIcon {
+        margin-bottom: 10px;
+        color: #d5d5d5;
+        font-size: 36px;
+      }
+
+      .loginBtn {
+        margin-top: 16px;
+        padding: 8px 18px;
+        border-radius: 4px;
+        background-color: $color-green;
+        color: #fff;
+        font-size: $font-xs;
+        font-weight: 700;
+        cursor: pointer;
       }
     }
   }

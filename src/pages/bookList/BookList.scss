@@ -100,8 +100,8 @@
   .bookListSectin {
     width: calc(100% - 28%);
 
-    .items {
-      @include flexCenter;
+    .emptyItem {
+      margin: auto;
     }
   }
 }
