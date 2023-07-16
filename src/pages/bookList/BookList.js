@@ -15,8 +15,14 @@ import "./BookList.scss";
 
 const BookList = () => {
   const location = useLocation();
-  const { originFilter, setOriginFilter, deliveryFilter, setDeliveryFilter } =
-    useContext(FilterContext);
+  const {
+    originFilter,
+    setOriginFilter,
+    deliveryFilter,
+    setDeliveryFilter,
+    mdSelectFilter,
+    setMdSelectFilter,
+  } = useContext(FilterContext);
 
   const [allBooks, setAllBooks] = useState([]);
   const [filteredByOriginBooks, setFilteredByOriginBooks] = useState([]);
@@ -60,15 +66,18 @@ const BookList = () => {
   }, [originFilter, allBooks]);
 
   useEffect(() => {
+    let filteredBooks = filteredByOriginBooks;
+
     if (deliveryFilter) {
-      const filteredBooks = filteredByOriginBooks.filter(
-        (book) => book.freeDelivery
-      );
-      setBooks(filteredBooks);
-    } else {
-      setBooks(filteredByOriginBooks);
+      filteredBooks = filteredBooks.filter((book) => book.freeDelivery);
     }
-  }, [deliveryFilter, filteredByOriginBooks]);
+
+    if (mdSelectFilter) {
+      filteredBooks = filteredBooks.filter((book) => book.MDselection);
+    }
+
+    setBooks(filteredBooks);
+  }, [deliveryFilter, mdSelectFilter, filteredByOriginBooks]);
 
   const fetchBooks = async (type) => {
     const booksData = await getBooks(type);
@@ -84,9 +93,15 @@ const BookList = () => {
     if (filterType === "origin") {
       setOriginFilter(value);
       setDeliveryFilter(false);
+      setMdSelectFilter(false);
     } else if (filterType === "freeDelivery") {
       setDeliveryFilter(value);
       setOriginFilter("");
+      setMdSelectFilter(false);
+    } else if (filterType === "MDselection") {
+      setMdSelectFilter(value);
+      setOriginFilter("");
+      setDeliveryFilter(false);
     }
   };
 
@@ -135,20 +150,19 @@ const BookList = () => {
             <AiOutlinePlus />
           </div>
           <div className="itemWrap">
-            <div className="item">MD의 선택</div>
+            <div
+              className="item"
+              onClick={() => {
+                setFilterAndResetOthers("MDselection", true);
+              }}
+            >
+              MD의 선택
+            </div>
             <AiOutlinePlus />
           </div>
           <div className="itemWrap">
             <div className="item">가격</div>
             <AiOutlinePlus />
-          </div>
-
-          <div>
-            <div className="itemTitle">베스트셀러</div>
-            <div className="itemWrap">
-              <div className="item">소설</div>
-              <AiOutlinePlus />
-            </div>
           </div>
 
           {/* <div className="itemClickedWrap">

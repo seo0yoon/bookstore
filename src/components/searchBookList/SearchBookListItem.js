@@ -38,10 +38,21 @@ const SearchBookListItem = ({ book }) => {
       >
         <div className="content">
           <img className="bookImg" src={book.imageURL} alt="" />
-          <div className="saleTag">SALE</div>
-          {book.freeDelivery && (
-            <div className="freeDeliveryTag">무료 배송</div>
-          )}
+          <div
+            className={`tagWrap freeDelivery ${
+              book.freeDelivery ? "show" : "hide"
+            }`}
+          >
+            무료배송
+          </div>
+          <div
+            className={`tagWrap MDselection ${
+              book.MDselection ? "show" : "hide"
+            } ${!book.freeDelivery ? "top" : ""}`}
+          >
+            MD의 선택
+          </div>
+
           <nav
             className={`options ${isOptionOpen ? "openOption" : "closeOption"}`}
           >

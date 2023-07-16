@@ -25,30 +25,39 @@
         height: 70%;
       }
 
-      .saleTag,
-      .freeDeliveryTag {
+      .tagWrap {
         position: absolute;
-        right: 5px;
-        width: 70px;
+        right: 3px;
+        width: 68px;
         min-width: 50px;
-        padding: 3px 8px;
-        margin-bottom: 5px;
-
+        padding: 6px;
+        border-radius: 5px;
         color: #fff;
-        font-size: $font-xs;
+        font-size: $font-xxs;
         font-weight: 600;
-        line-height: 15px;
         text-align: center;
-      }
 
-      .saleTag {
-        top: 5px;
-        background-color: $color-secondary;
-      }
+        &.hide {
+          display: none;
+        }
 
-      .freeDeliveryTag {
-        top: 30px;
-        background-color: $color-blue;
+        &.show {
+          display: block;
+        }
+
+        &.freeDelivery.show {
+          top: 3px;
+          background-color: $color-blue;
+        }
+
+        &.MDselection.show {
+          top: 30px;
+          background-color: $color-primary;
+        }
+
+        &.MDselection.top.show {
+          top: 3px;
+        }
       }
 
       .options {

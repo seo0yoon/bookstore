@@ -5,6 +5,7 @@ export const FilterContext = createContext();
 export const FilterProvider = ({ children }) => {
   const [originFilter, setOriginFilter] = useState("");
   const [deliveryFilter, setDeliveryFilter] = useState("");
+  const [mdSelectFilter, setMdSelectFilter] = useState("");
 
   return (
     <FilterContext.Provider
@@ -13,6 +14,8 @@ export const FilterProvider = ({ children }) => {
         setOriginFilter,
         deliveryFilter,
         setDeliveryFilter,
+        mdSelectFilter,
+        setMdSelectFilter,
       }}
     >
       {children}

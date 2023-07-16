@@ -7,7 +7,8 @@ import { FilterContext } from "../../../contexts/FilterContext";
 import "./SubMenu.scss";
 
 const SubMenuItem = () => {
-  const { setOriginFilter, setDeliveryFilter } = useContext(FilterContext);
+  const { setOriginFilter, setDeliveryFilter, setMdSelectFilter } =
+    useContext(FilterContext);
 
   const handleItemClick = (e) => {
     const tab = e.target.getAttribute("data-tab");
@@ -18,8 +19,9 @@ const SubMenuItem = () => {
       tab === "search" ||
       tab === "all"
     ) {
-      setOriginFilter(""); 
-      setDeliveryFilter(""); 
+      setOriginFilter("");
+      setDeliveryFilter("");
+      setMdSelectFilter("");
     }
   };
 
