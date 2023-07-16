@@ -5,6 +5,7 @@ import { getBooks, searchBooks } from "../../firebase/firestore";
 import { FilterContext } from "../../contexts/FilterContext";
 
 import BookListItem from "../../components/bookList/BookListItem";
+import BookListNav from "../../components/bookList/bookListNav/BookListNav";
 import BestsellerListItem from "../../components/bestsellerList/BestsellerListItem";
 import NewBookListItem from "../../components/newBookList/NewBookListItem";
 import SearchBookListItem from "../../components/searchBookList/SearchBookListItem";
@@ -44,6 +45,7 @@ const BookList = () => {
       setActiveTitle("신상품");
       setActiveTab("신상품");
     } else if (tab === "search") {
+      setActiveTitle("검색결과");
       fetchSearchBooks(query);
       setActiveTab("검색결과");
     } else {
@@ -107,11 +109,27 @@ const BookList = () => {
 
   console.log("books", books);
 
+  const getActiveTab = () => {
+    if (originFilter === "국내도서") {
+      return "국내도서";
+    } else if (originFilter === "외국도서") {
+      return "외국도서";
+    } else if (deliveryFilter) {
+      return "무료배송";
+    } else if (mdSelectFilter) {
+      return "MD의 추천";
+    } else {
+      return "전체";
+    }
+  };
+
   return (
     <div className="bookListContainer">
-      <div className="bookListTitle">
-        {activeTitle} 총 {books.length}권
-      </div>
+      <BookListNav
+        getActiveTab={getActiveTab}
+        activeTitle={activeTitle}
+        books={books}
+      />
       <div className="bookListContent">
         <div className="sideBarBox">
           <div className="itemTitle">필터</div>
