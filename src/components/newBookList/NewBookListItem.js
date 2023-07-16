@@ -26,6 +26,9 @@ const NewBookListItem = ({ book }) => {
     addToCart(book);
   };
 
+  const formattedPrice = parseInt(book.price).toLocaleString();
+  const salePrice = (parseInt(book.price) * 0.9).toLocaleString();
+
   return (
     <article className="newBookListItem">
       <section
@@ -35,8 +38,10 @@ const NewBookListItem = ({ book }) => {
       >
         <div className="content">
           <img className="bookImg" src={book.imageURL} alt="" />
-          <div className="badgeTop">sale</div>
-          <div className="badgeBottom">-10%</div>
+          <div className="saleTag">SALE</div>
+          {book.freeDelivery && (
+            <div className="freeDeliveryTag">무료 배송</div>
+          )}
           <nav
             className={`options ${isOptionOpen ? "openOption" : "closeOption"}`}
           >
@@ -58,8 +63,8 @@ const NewBookListItem = ({ book }) => {
         <section className="bottomContext">
           <h3 className="bottomTitle">{book.title}</h3>
           <div className="bottomPrice">
-            <span className="prePrice">{book.price}</span>
-            <span className="salePrice">{book.price}</span>
+            <span className="prePrice">{formattedPrice}원</span>
+            <span className="salePrice">{salePrice}원</span>
           </div>
         </section>
         <section className="bottomDetail">

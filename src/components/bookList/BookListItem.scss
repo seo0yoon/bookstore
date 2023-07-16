@@ -25,15 +25,15 @@
         height: 70%;
       }
 
-      .badgeTop,
-      .badgeBottom {
+      .saleTag,
+      .freeDeliveryTag {
         position: absolute;
         right: 5px;
-        width: 50px;
+        width: 70px;
         min-width: 50px;
         padding: 3px 8px;
         margin-bottom: 5px;
-        background-color: #ff6162;
+
         color: #fff;
         font-size: $font-xs;
         font-weight: 600;
@@ -41,12 +41,14 @@
         text-align: center;
       }
 
-      .badgeTop {
+      .saleTag {
         top: 5px;
+        background-color: $color-secondary;
       }
 
-      .badgeBottom {
+      .freeDeliveryTag {
         top: 30px;
+        background-color: $color-blue;
       }
 
       .options {
@@ -76,6 +78,17 @@
 
             .context {
               align-items: center;
+            }
+
+            .icon {
+              width: 22px;
+              height: 22px;
+            }
+
+            &:not(:last-child):hover {
+              color: #fc3c3c;
+              opacity: 0.8;
+              transition: color 0.6s ease;
             }
           }
         }
@@ -144,26 +157,17 @@
         line-height: 1.43;
       }
     }
+
     &:hover {
       box-shadow: 0 0 10px 0 rgb(0 0 0 / 14%);
     }
   }
-}
 
-@media (max-width: 62em) {
-  .bookListItem {
+  @media (max-width: 58em) {
     width: 50%;
   }
-}
 
-@media (max-width: 48em) {
-  .bookListItem {
-    width: 50%;
-  }
-}
-
-@media (max-width: 38em) {
-  .bookListItem {
+  @media (max-width: 38em) {
     width: 100%;
   }
 }

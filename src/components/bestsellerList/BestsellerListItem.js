@@ -38,8 +38,10 @@ const BestsellerListItem = ({ book }) => {
       >
         <div className="content">
           <img className="bookImg" src={book.imageURL} alt="book" />
-          <div className="badgeTop">sale</div>
-          <div className="badgeBottom">-10%</div>
+          <div className="saleTag">SALE</div>
+          {book.freeDelivery && (
+            <div className="freeDeliveryTag">무료 배송</div>
+          )}
           <nav
             className={`options ${isOptionOpen ? "openOption" : "closeOption"}`}
           >
