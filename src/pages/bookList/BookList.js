@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
-import { getAllBooks, searchBooks } from "../../firebase/firestore";
+import { getBooks, searchBooks } from "../../firebase/firestore";
 
 import BookListItem from "../../components/bookList/BookListItem";
 import BestsellerListItem from "../../components/bestsellerList/BestsellerListItem";
@@ -15,12 +15,11 @@ import "./BookList.scss";
 const BookList = () => {
   const location = useLocation();
 
-  const [books, setBooks] = useState([]);
+  const [allBooks, setAllBooks] = useState([]); // 모든 도서를 저장
+  const [books, setBooks] = useState([]); // 필터링된 도서를 저장
   const [activeTab, setActiveTab] = useState("전체보기");
   const [activeTitle, setActiveTitle] = useState("전체보기");
-  const [originFilter, setOriginFilter] = useState([]);
-  const [activeFilter, setActiveFilter] = useState("");
-  const [clickedFilters, setClickedFilters] = useState([]);
+  const [originFilter, setOriginFilter] = useState("");
 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
@@ -39,24 +38,24 @@ const BookList = () => {
       fetchSearchBooks(query);
       setActiveTab("검색결과");
     } else {
-      fetchBooks();
+      fetchBooks(undefined);
       setActiveTab("전체보기");
       setActiveTitle("전체보기");
     }
+  }, [location.search]);
 
-    console.log(books);
-  }, [location.search, originFilter]);
+  useEffect(() => {
+    // originFilter가 변경될 때마다 도서를 필터링
+    if (originFilter === "국내도서" || originFilter === "외국도서") {
+      setBooks(allBooks.filter((book) => book.origin === originFilter));
+    } else {
+      setBooks(allBooks);
+    }
+  }, [originFilter, allBooks]);
 
   const fetchBooks = async (type) => {
-    const allBooksData = await getAllBooks();
-    let filteredBooks = filterBooks(allBooksData, originFilter);
-
-    if (type) {
-      const booksData = filteredBooks.filter((book) => book.type === type);
-      filteredBooks = booksData;
-    }
-
-    setBooks(filteredBooks);
+    const booksData = await getBooks(type);
+    setAllBooks(booksData);
   };
 
   const fetchSearchBooks = async (query) => {
@@ -64,41 +63,11 @@ const BookList = () => {
     setBooks(searchedBooksData);
   };
 
-  const filterBooks = (books, originFilter) => {
-    let filteredBooks = [...books];
-
-    if (originFilter.length > 0) {
-      filteredBooks = filteredBooks.filter((book) =>
-        originFilter.includes(book.origin)
-      );
-    }
-
-    if (originFilter.includes("freeDelivery")) {
-      filteredBooks = filteredBooks.filter(
-        (book) => book.freeDelivery === true
-      );
-    }
-
-    return filteredBooks;
-  };
-
-  const handleOriginFilterChange = (origin) => {
-    let updatedOriginFilter = [...originFilter];
-
-    if (originFilter.includes(origin)) {
-      // 이미 선택된 필터를 누르면 선택 해제
-      updatedOriginFilter = updatedOriginFilter.filter((o) => o !== origin);
-    } else {
-      // 새로운 필터를 추가
-      updatedOriginFilter.push(origin);
-    }
-
-    setOriginFilter(updatedOriginFilter);
-    fetchBooks(activeTab === "전체보기" ? undefined : activeTab.toLowerCase());
-  };
   return (
     <div className="bookListContainer">
-      <div className="bookListTitle">{activeTitle}</div>
+      <div className="bookListTitle">
+        {activeTitle} 총 {books.length}권
+      </div>
       <div className="bookListContent">
         <div className="sideBarBox">
           <div className="itemTitle">필터</div>
@@ -106,7 +75,10 @@ const BookList = () => {
           <div className="itemWrap">
             <div
               className="item"
-              onClick={() => handleOriginFilterChange("국내도서")}
+              onClick={() => {
+                console.log("구갠");
+                setOriginFilter("국내도서");
+              }}
             >
               국내도서
             </div>
@@ -115,7 +87,10 @@ const BookList = () => {
           <div className="itemWrap">
             <div
               className="item"
-              onClick={() => handleOriginFilterChange("외국도서")}
+              onClick={() => {
+                console.log("외갠");
+                setOriginFilter("외국도서");
+              }}
             >
               외국도서
             </div>
@@ -142,7 +117,7 @@ const BookList = () => {
             </div>
           </div>
 
-          <div className="itemClickedWrap">
+          {/* <div className="itemClickedWrap">
             {clickedFilters.map((filter, index) => (
               <div className="clickBox" key={index}>
                 <div className="itemClicked">{filter}</div>
@@ -156,7 +131,7 @@ const BookList = () => {
                 />
               </div>
             ))}
-          </div>
+          </div> */}
         </div>
 
         <div className="bookListSectin">
