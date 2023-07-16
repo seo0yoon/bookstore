@@ -16,7 +16,8 @@ const Admin = () => {
   const [bookTitle, setBookTitle] = useState("");
   const [bookAuthor, setBookAuthor] = useState("");
   const [bookPrice, setBookPrice] = useState("");
-  const [bookpublicationDate, setBookPublicationDate] = useState("");
+  const [bookPublicationDate, setBookPublicationDate] = useState("");
+  const [imageFile, setImageFile] = useState(null);
 
   const fetchBooks = async () => {
     const books = await getBooks();
@@ -28,17 +29,28 @@ const Admin = () => {
   }, []);
 
   const handleBookAdd = async () => {
-    if (!bookTitle || !bookAuthor || !bookPrice || !bookpublicationDate) {
+    if (
+      !bookTitle ||
+      !bookAuthor ||
+      !bookPrice ||
+      !bookPublicationDate ||
+      !imageFile
+    ) {
       alert("모든 필드를 채워주세요.");
       return;
     }
 
-    await addBook({
-      title: bookTitle,
-      author: bookAuthor,
-      price: bookPrice,
-      publicationDate: bookpublicationDate,
-    });
+    await addBook(
+      {
+        title: bookTitle,
+        author: bookAuthor,
+        price: bookPrice,
+        publicationDate: bookPublicationDate,
+      },
+      imageFile
+    );
+
+    setImageFile(null); // 이미지 파일 상태 초기화
     fetchBooks();
     console.log("추가 완료");
     alert("추가 되었습니다.");
@@ -63,8 +75,49 @@ const Admin = () => {
     setBookPublicationDate(book.publicationDate);
   };
 
+  // const handleBookSave = async () => {
+  //   if (!bookTitle || !bookAuthor || !bookPrice || !bookPublicationDate) {
+  //     alert("모든 필드를 채워주세요.");
+  //     return;
+  //   }
+
+  //   if (selectedBook) {
+  //     const isModified =
+  //       selectedBook.title !== bookTitle ||
+  //       selectedBook.author !== bookAuthor ||
+  //       selectedBook.price !== bookPrice ||
+  //       selectedBook.publicationDate !== bookPublicationDate;
+
+  //     if (!isModified) {
+  //       alert("변경된 내용이 없습니다.");
+  //       return;
+  //     }
+
+  //     await updateBook({
+  //       id: selectedBook.id,
+  //       title: bookTitle,
+  //       author: bookAuthor,
+  //       price: bookPrice,
+  //       publicationDate: bookPublicationDate,
+  //     });
+  //     console.log("수정 완료");
+  //     alert("수정 되었습니다.");
+  //   } else {
+  //     await addBook({
+  //       title: bookTitle,
+  //       author: bookAuthor,
+  //       price: bookPrice,
+  //       publicationDate: bookPublicationDate,
+  //     });
+  //     console.log("추가 완료");
+  //     alert("추가 되었습니다.");
+  //   }
+
+  //   fetchBooks();
+  // };
+
   const handleBookSave = async () => {
-    if (!bookTitle || !bookAuthor || !bookPrice || !bookpublicationDate) {
+    if (!bookTitle || !bookAuthor || !bookPrice || !bookPublicationDate) {
       alert("모든 필드를 채워주세요.");
       return;
     }
@@ -74,34 +127,33 @@ const Admin = () => {
         selectedBook.title !== bookTitle ||
         selectedBook.author !== bookAuthor ||
         selectedBook.price !== bookPrice ||
-        selectedBook.publicationDate !== bookpublicationDate;
+        selectedBook.publicationDate !== bookPublicationDate ||
+        imageFile;
 
       if (!isModified) {
         alert("변경된 내용이 없습니다.");
         return;
       }
 
-      await updateBook({
-        id: selectedBook.id,
-        title: bookTitle,
-        author: bookAuthor,
-        price: bookPrice,
-        publicationDate: bookpublicationDate,
-      });
-      console.log("수정 완료");
-      alert("수정 되었습니다.");
-    } else {
-      await addBook({
-        title: bookTitle,
-        author: bookAuthor,
-        price: bookPrice,
-        publicationDate: bookpublicationDate,
-      });
-      console.log("추가 완료");
-      alert("추가 되었습니다.");
-    }
+      await updateBook(
+        {
+          id: selectedBook.id,
+          title: bookTitle,
+          author: bookAuthor,
+          price: bookPrice,
+          publicationDate: bookPublicationDate,
+        },
+        imageFile
+      );
 
-    fetchBooks();
+      setImageFile(null); // 이미지 파일 상태 초기화
+      fetchBooks();
+      alert("도서 정보가 수정되었습니다.");
+    }
+  };
+
+  const handleImageChange = (e) => {
+    setImageFile(e.target.files[0]);
   };
 
   const bookInputs = [
@@ -127,28 +179,47 @@ const Admin = () => {
       type: "text",
     },
     {
-      name: "bookpublicationDate",
-      state: bookpublicationDate,
+      name: "bookPublicationDate",
+      state: bookPublicationDate,
       setState: setBookPublicationDate,
       placeholder: "발행일",
       type: "date",
     },
+    {
+      name: "bookImage",
+      state: imageFile,
+      setState: setImageFile,
+      placeholder: "이미지",
+      type: "file",
+      onChange: handleImageChange,
+    },
   ];
 
+  console.log("books", books);
   return (
     <div className="adminBookListContainer">
       <div className="bookListInputBox">
         <div className="bookForm">
-          {bookInputs.map((input) => (
-            <input
-              key={input.name}
-              className="bookInput"
-              value={input.state}
-              onChange={(e) => input.setState(e.target.value)}
-              placeholder={input.placeholder}
-              type={input.type}
-            />
-          ))}
+          {bookInputs.map((input) =>
+            input.type !== "file" ? (
+              <input
+                key={input.name}
+                className="bookInput"
+                value={input.state}
+                onChange={(e) => input.setState(e.target.value)}
+                placeholder={input.placeholder}
+                type={input.type}
+              />
+            ) : (
+              <input
+                key={input.name}
+                className="bookInput"
+                onChange={input.onChange}
+                placeholder={input.placeholder}
+                type={input.type}
+              />
+            )
+          )}
         </div>
         <div className="btnBox">
           <button

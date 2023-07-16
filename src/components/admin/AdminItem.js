@@ -21,7 +21,11 @@ const AdminItem = ({ book, handleBookDelete, handleBookClick }) => {
         </button>
         <section className="bottomContext">
           <div className="imgWrap">
-            <img className="bookImg" src={book.imageURL} alt="" />
+            <img
+              className="bookImg"
+              src={`${book.imageURL}?timestamp=${new Date().getTime()}`}
+              alt="book cover"
+            />
           </div>
           <h3 className="bottomTitle">{book.title}</h3>
           <div className="bottomPrice">

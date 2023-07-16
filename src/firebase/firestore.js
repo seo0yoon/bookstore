@@ -10,6 +10,12 @@ import {
   query,
   where,
 } from "firebase/firestore";
+import {
+  getStorage,
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+} from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDNRIp_To5zF5Atz3cyxtzwlU7qt8UaRmg",
@@ -23,6 +29,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const storage = getStorage(app);
 
 export const getBooks = async (type) => {
   const booksRef = collection(db, "books");
@@ -42,13 +49,80 @@ export const getBooks = async (type) => {
   return booksList;
 };
 
-export const addBook = async (book) => {
+// export const addBook = async (book) => {
+//   const booksRef = collection(db, "books");
+//   await addDoc(booksRef, book);
+// };
+
+export const addBook = async (book, imageFile) => {
   const booksRef = collection(db, "books");
+
+  if (imageFile) {
+    const storageRef = ref(storage, `images/${imageFile.name}`);
+    const uploadTask = uploadBytesResumable(storageRef, imageFile);
+
+    return new Promise((resolve, reject) => {
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {},
+        (error) => {
+          reject(error);
+        },
+        async () => {
+          const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+          book.imageURL = downloadURL;
+
+          await addDoc(booksRef, book);
+          resolve();
+        }
+      );
+    });
+  }
+
   await addDoc(booksRef, book);
 };
 
-export const updateBook = async (book) => {
+// export const updateBook = async (book) => {
+//   const bookRef = doc(db, "books", book.id);
+//   await updateDoc(bookRef, {
+//     title: book.title,
+//     author: book.author,
+//     price: book.price,
+//     publicationDate: book.publicationDate,
+//   });
+// };
+
+export const updateBook = async (book, imageFile) => {
   const bookRef = doc(db, "books", book.id);
+
+  if (imageFile) {
+    const storageRef = ref(storage, `images/${imageFile.name}`);
+    const uploadTask = uploadBytesResumable(storageRef, imageFile);
+
+    return new Promise((resolve, reject) => {
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {},
+        (error) => {
+          reject(error);
+        },
+        async () => {
+          const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+          book.imageURL = downloadURL;
+
+          await updateDoc(bookRef, {
+            title: book.title,
+            author: book.author,
+            price: book.price,
+            publicationDate: book.publicationDate,
+            imageURL: book.imageURL,
+          });
+          resolve();
+        }
+      );
+    });
+  }
+
   await updateDoc(bookRef, {
     title: book.title,
     author: book.author,
