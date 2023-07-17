@@ -75,47 +75,6 @@ const Admin = () => {
     setBookPublicationDate(book.publicationDate);
   };
 
-  // const handleBookSave = async () => {
-  //   if (!bookTitle || !bookAuthor || !bookPrice || !bookPublicationDate) {
-  //     alert("모든 필드를 채워주세요.");
-  //     return;
-  //   }
-
-  //   if (selectedBook) {
-  //     const isModified =
-  //       selectedBook.title !== bookTitle ||
-  //       selectedBook.author !== bookAuthor ||
-  //       selectedBook.price !== bookPrice ||
-  //       selectedBook.publicationDate !== bookPublicationDate;
-
-  //     if (!isModified) {
-  //       alert("변경된 내용이 없습니다.");
-  //       return;
-  //     }
-
-  //     await updateBook({
-  //       id: selectedBook.id,
-  //       title: bookTitle,
-  //       author: bookAuthor,
-  //       price: bookPrice,
-  //       publicationDate: bookPublicationDate,
-  //     });
-  //     console.log("수정 완료");
-  //     alert("수정 되었습니다.");
-  //   } else {
-  //     await addBook({
-  //       title: bookTitle,
-  //       author: bookAuthor,
-  //       price: bookPrice,
-  //       publicationDate: bookPublicationDate,
-  //     });
-  //     console.log("추가 완료");
-  //     alert("추가 되었습니다.");
-  //   }
-
-  //   fetchBooks();
-  // };
-
   const handleBookSave = async () => {
     if (!bookTitle || !bookAuthor || !bookPrice || !bookPublicationDate) {
       alert("모든 필드를 채워주세요.");
@@ -146,7 +105,7 @@ const Admin = () => {
         imageFile
       );
 
-      setImageFile(null); // 이미지 파일 상태 초기화
+      setImageFile(null); 
       fetchBooks();
       alert("도서 정보가 수정되었습니다.");
     }

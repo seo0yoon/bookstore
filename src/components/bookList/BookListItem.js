@@ -1,5 +1,7 @@
 import React, { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../contexts/CartContext";
+import { AuthContext } from "../../contexts/AuthContext";
 
 import CartModal from "../modal/cartModal/CartModal";
 
@@ -9,12 +11,20 @@ import { BsShare } from "react-icons/bs";
 import "./BookListItem.scss";
 
 const BookListItem = ({ book }) => {
+  const navigate = useNavigate();
   const { cart, addToCart } = useContext(CartContext);
+  const { user } = useContext(AuthContext);
 
   const [isOptionOpen, setIsOptionOpen] = useState(false);
   const [message, setMessage] = useState("");
 
   const handleAddToCart = () => {
+    if (!user) {
+      alert("로그인을 해주세요.");
+      navigate("/login");
+      return;
+    }
+
     const isAlreadyInCart = cart.find((item) => item.id === book.id);
 
     if (isAlreadyInCart) {
