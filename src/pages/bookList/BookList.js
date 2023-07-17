@@ -178,26 +178,6 @@ const BookList = () => {
             </div>
             <AiOutlinePlus />
           </div>
-          <div className="itemWrap">
-            <div className="item">가격</div>
-            <AiOutlinePlus />
-          </div>
-
-          {/* <div className="itemClickedWrap">
-            {clickedFilters.map((filter, index) => (
-              <div className="clickBox" key={index}>
-                <div className="itemClicked">{filter}</div>
-                <AiFillCloseCircle
-                  className="closeIcon"
-                  onClick={() => {
-                    setClickedFilters(
-                      clickedFilters.filter((f) => f !== filter)
-                    );
-                  }}
-                />
-              </div>
-            ))}
-          </div> */}
         </div>
 
         <div className="bookListSectin">
