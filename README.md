@@ -6,7 +6,7 @@
 Firebase를 통해 사용자 인증 기능을 구현하였으며, 사용자는 로그인 페이지에서 아이디와 비밀번호를 입력하여 로그인하고,
 회원가입 페이지에서 새로운 계정을 생성할 수 있습니다.
 
-DEMO : <https://main.d382aieutdh889.amplifyapp.com/>
+DEMO : [<https://main.d382aieutdh889.amplifyapp.com/>](https://main.d174sokswz35yr.amplifyapp.com/)
 
 ## 구성
 
