@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 import { getOrders } from "../../firebase/firestore";
+import { AuthContext } from "../../contexts/AuthContext";
+
 import OrderItem from "../../components/order/OrderItem";
 
 import { AiFillInfoCircle } from "react-icons/ai";
@@ -8,16 +10,21 @@ import { AiFillInfoCircle } from "react-icons/ai";
 import "./OrderHistory.scss";
 
 const OrderHistory = () => {
+  const { user } = useContext(AuthContext);
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
     const fetchOrders = async () => {
-      const ordersList = await getOrders();
-      setOrders(ordersList);
+      if (user) {
+        const ordersList = await getOrders();
+        setOrders(ordersList);
+      } else {
+        setOrders([]);
+      }
     };
 
     fetchOrders();
-  }, []);
+  }, [user]);
 
   return (
     <div className="orderHistory">
