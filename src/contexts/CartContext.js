@@ -89,6 +89,11 @@ export const CartProvider = ({ children }) => {
     localStorage.setItem("cart", JSON.stringify(newCart));
   };
 
+  const clearCart = () => {
+    setCart([]);
+    localStorage.removeItem("cart");
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -103,6 +108,7 @@ export const CartProvider = ({ children }) => {
         toggleItemChecked,
         productTotal,
         clearSelectedItems,
+        clearCart,
       }}
     >
       {children}

@@ -92,18 +92,20 @@
       @include flexCenter;
 
       .cartWrap {
+        display: flex;
+        align-items: center;
         position: relative;
 
         .cartIcon {
-          width: 24px;
-          height: 24px;
+          width: 26px;
+          height: 26px;
           cursor: pointer;
         }
 
         .cartQuantity {
           position: absolute;
           bottom: -5px;
-          right: -10px;
+          right: 33px;
           padding: 2px 6px;
           border-radius: 50%;
           background-color: $color-blue;

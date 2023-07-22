@@ -16,7 +16,7 @@ const Main = () => {
 
   useEffect(() => {
     const fetchBestsellerBooks = async () => {
-      const fetchedBestseller = await getBooks("bestseller"); // ensure "bestSeller" is correct type
+      const fetchedBestseller = await getBooks("bestseller");
       setBestseller(fetchedBestseller);
     };
 

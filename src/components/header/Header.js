@@ -16,11 +16,12 @@ import "./Header.scss";
 const Header = () => {
   const [click, setClick] = useState(false);
   const { user, logout, loading } = useContext(AuthContext);
-  const { cart } = useContext(CartContext);
+  const { cart, clearCart } = useContext(CartContext);
 
   const handleClick = () => {
     if (user) {
       logout();
+      clearCart();
     }
   };
 
@@ -63,8 +64,8 @@ const Header = () => {
           {loading ? (
             <div>Loading...</div>
           ) : (
-            <section>
-              <Link to={"/cart"} className="cartWrap">
+            <section className="cartWrap">
+              <Link to={"/cart"}>
                 <BsBagCheck className="cartIcon" />
                 {cart.length > 0 && (
                   <span className="cartQuantity">{cart.length}</span>

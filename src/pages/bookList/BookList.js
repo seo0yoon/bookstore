@@ -107,8 +107,6 @@ const BookList = () => {
     }
   };
 
-  console.log("books", books);
-
   const getActiveTab = () => {
     if (originFilter === "국내도서") {
       return "국내도서";
